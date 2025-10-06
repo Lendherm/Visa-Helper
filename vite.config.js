@@ -1,9 +1,12 @@
-import { defineConfig } from "vite";
 import { resolve } from "path";
+import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "./", // rutas relativas, ideal para Netlify o GitHub Pages
+  root: "src/", // 🔹 le decimos a Vite que el punto de entrada está dentro de src
+  base: "./",   // 🔹 rutas relativas (ideal para Netlify, GitHub Pages, etc.)
+
   build: {
+    outDir: "../dist", // 🔹 salida del build fuera de src/
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
@@ -11,5 +14,6 @@ export default defineConfig({
       },
     },
   },
-  publicDir: resolve(__dirname, "src/public"), // ⚡ para que Vite use src/public como carpeta pública
+
+  publicDir: resolve(__dirname, "src/public"), // 🔹 carpeta pública dentro de src/
 });
