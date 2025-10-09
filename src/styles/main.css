@@ -1,3 +1,5 @@
+/* src/styles/main.css */
+
 /* ===== ESTILOS BASE ===== */
 body, html {
     margin: 0;
@@ -8,6 +10,51 @@ body, html {
 }
 
 /* Header */
+
+/* Header Controls */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* ELIMINAR ESTA SECCIÓN DUPLICADA DEL translate-btn */
+/*
+.translate-btn {
+    background: #60a3bc;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.translate-btn:hover {
+    background: #0a3d62;
+}
+*/
+
+/* Responsive para header controls */
+@media (max-width: 768px) {
+    .header-controls {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    /* ELIMINAR ESTO TAMBIÉN
+    .translate-btn {
+        padding: 10px 15px;
+    }
+    */
+}
+
 .site-header {
     background-color: #0a3d62;
     color: white;

@@ -1,3 +1,5 @@
+import { CalendarService } from "./api-service.js";
+
 // ===== APLICACIÓN PRINCIPAL =====
 
 class VisaHelperApp {

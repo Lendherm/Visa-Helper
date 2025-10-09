@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoGainzer: Servicios de Visa e Inmigración</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #032247;
+        }
+        
+        .logo span {
+            color: #0067FF;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #032247;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #0067FF;
+        }
+        
+        .btn {
+            background-color: #0067FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0052cc;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1488085061387-422e29b40080?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #032247;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #e6f0ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .feature-icon i {
+            font-size: 30px;
+            color: #0067FF;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #032247;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            position: relative;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #e6f0ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #0067FF;
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: #032247;
+        }
+        
+        .author-info p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .rating {
+            color: #FFC107;
+            margin-top: 5px;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-img i {
+            font-size: 60px;
+            color: #0067FF;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: #032247;
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 0 15px;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: #0067FF;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .step h4 {
+            margin-bottom: 15px;
+            color: #032247;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background-color: #032247;
+            color: white;
+        }
+        
+        .faq .section-title h2 {
+            color: white;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 20px;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            color: #ccc;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #032247;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+            }
+            
+            .step {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Go<span>Gainzer</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#proceso">Proceso</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+                <button class="btn">Contactar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Asistencia Experta para Documentación de Viaje</h1>
+            <p>Asistencia rápida y precisa con documentos de viaje para una experiencia sin complicaciones</p>
+            <button class="btn">Comenzar Ahora</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por Qué Elegirnos</h2>
+                <p>Ofrecemos servicios confiables y seguros para todas tus necesidades de documentación de viaje</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>✓</i>
+                    </div>
+                    <h3>Confiable</h3>
+                    <p>Soporte 24/7 y tiempo de actividad garantizado para tus trámites importantes</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>★</i>
+                    </div>
+                    <h3>Confiado</h3>
+                    <p>Calificaciones excelentes en plataformas de revisión con miles de clientes satisfechos</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>🛡️</i>
+                    </div>
+                    <h3>Seguro</h3>
+                    <p>Procesos seguros y protección de datos para tu tranquilidad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo Que Dicen Nuestros Clientes</h2>
+                <p>Descubre las experiencias de nuestros clientes satisfechos</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "El proceso para obtener mi visa fue increíblemente fácil con GoGainzer. Me guiaron en cada paso y respondieron todas mis preguntas rápidamente. ¡Altamente recomendado!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div class="author-info">
+                            <h4>María José</h4>
+                            <p>Visa de Turista EE.UU.</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Necesitaba renovar mi pasaporte con urgencia y GoGainzer cumplió con el plazo prometido. El servicio al cliente fue excepcional y me mantuvieron informado durante todo el proceso."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">CR</div>
+                        <div class="author-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <p>Renovación de Pasaporte</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Como estudiante internacional, el proceso de visa puede ser abrumador. GoGainzer simplificó todo y me ayudó a preparar la documentación correcta. ¡Obtuve mi visa sin problemas!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AG</div>
+                        <div class="author-info">
+                            <h4>Ana García</h4>
+                            <p>Visa de Estudiante</p>
+                            <div class="rating">★★★★☆</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Trabajé con GoGainzer para mi proceso de residencia y quedé impresionado con su conocimiento y profesionalismo. Valoro mucho su atención personalizada y seguimiento constante."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RL</div>
+                        <div class="author-info">
+                            <h4>Roberto López</h4>
+                            <p>Proceso de Residencia</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Todo lo que necesitas para tus trámites de viaje e inmigración en un solo lugar</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <i>✈️</i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Visas de Viaje</h3>
+                        <p>Asistencia completa para visas de turista, negocios, estudiante y tránsito para destinos alrededor del mundo.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <i>📘</i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Pasaportes</h3>
+                        <p>Renovación y solicitud de nuevos pasaportes con garantía de entrega a tiempo.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <i>🏠</i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Inmigración</h3>
+                        <p>Asesoramiento para procesos de inmigración a largo plazo y residencia permanente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="proceso">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Proceso en 4 Pasos</h2>
+                <p>Un proceso simple y efectivo para obtener tus documentos de viaje</p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Completar Solicitud</h4>
+                    <p>Llena nuestro formulario en línea con información sobre tu viaje</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Seleccionar Paquete</h4>
+                    <p>Elige el paquete que se adapte a tus necesidades y presupuesto</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Procesamiento</h4>
+                    <p>Revisamos tu aplicación y realizamos todo el trabajo burocrático</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Recibir Documentos</h4>
+                    <p>Recibe tus documentos listos para presentar en la frontera</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Respuestas a las preguntas más comunes sobre nuestros servicios</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Puedo trabajar en EE.UU. con una visa B1 por un corto tiempo?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        No exactamente. La visa B1 es una visa de negocios destinada solo a una visita temporal, por lo que no se le permite trabajar en los Estados Unidos.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Pueden ayudarme a obtener una visa de estudiante para EE.UU.?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        ¡Claro que sí! Nuestros consultores tienen amplia experiencia solicitando visas de estudiante para estudiantes de todo el mundo.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Cuánto tiempo toma obtener una visa?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Esto depende del tipo de visa que necesites, de dónde estés aplicando y de varios factores personales.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GoGainzer</h3>
+                    <p>Asistencia experta para visas e inmigración con más de 500,000 casos exitosos.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#">Visas de Viaje</a></li>
+                        <li><a href="#">Pasaportes</a></li>
+                        <li><a href="#">Inmigración</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#proceso">Proceso</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>Email: info@GoGainzer.com</li>
+                        <li>Teléfono: +525550802000</li>
+                        <li>Dirección: Av. P.º de la Reforma 305, Cuauhtémoc, 06500 Ciudad de México, CDMX, Mexico</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Proyecto Escolar - GoGainzer &copy; 2025. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Funcionalidad para las preguntas frecuentes
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+                // Cambiar el símbolo
+                const symbol = question.querySelector('span');
+                symbol.textContent = item.classList.contains('active') ? '-' : '+';
+            });
+        });
+        
+        // Funcionalidad para los botones de contacto
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', () => {
+                alert('¡Gracias por tu interés! Esta es una demostración para un proyecto escolar.');
+            });
+        });j
+    </script>
+</body>
+</html>

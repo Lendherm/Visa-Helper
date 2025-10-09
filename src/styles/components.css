@@ -1,3 +1,157 @@
+/* src/styles/components.css */
+
+/* ===== DROPDOWN DE IDIOMAS ===== */
+.language-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    background: #60a3bc;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 160px;
+    justify-content: space-between;
+}
+
+.dropdown-toggle:hover {
+    background: #0a3d62;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1002;
+    display: none;
+    margin-top: 5px;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+    gap: 10px;
+}
+
+.dropdown-item:hover {
+    background: #f8f9fa;
+}
+
+.dropdown-item .flag {
+    font-size: 16px;
+}
+
+.dropdown-item .language-name {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Asegurar que el dropdown esté por encima de otros elementos */
+.header-controls {
+    position: relative;
+    z-index: 1001;
+}
+
+/* ===== NOTIFICACIONES (VERSIÓN ÚNICA) ===== */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    z-index: 1100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    animation: slideInNotification 0.3s ease;
+    max-width: 300px;
+    word-wrap: break-word;
+}
+
+.notification.success {
+    background: #78e08f;
+}
+
+.notification.error {
+    background: #e55039;
+}
+
+.notification.info {
+    background: #60a3bc;
+}
+
+.notification.warning {
+    background: #f6b93b;
+}
+
+@keyframes slideInNotification {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ===== BOTONES DE TRADUCCIÓN (VERSIÓN ÚNICA) ===== */
+.translate-btn {
+    background: #60a3bc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.translate-btn:hover {
+    background: #0a3d62;
+}
+
+.calendar-btn {
+    background: #60a3bc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.calendar-btn:hover {
+    background: #0a3d62;
+}
+
 /* ===== COMPONENTES ESPECÍFICOS ===== */
 
 /* Dashboard */
@@ -267,24 +421,6 @@
     background: #78e08f;
 }
 
-.translate-btn, .calendar-btn {
-    background: #60a3bc;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.translate-btn:hover, .calendar-btn:hover {
-    background: #0a3d62;
-}
-
 /* Documentos */
 .documents-grid {
     display: grid;
@@ -339,41 +475,6 @@
     color: #721c24;
 }
 
-/* Notificaciones */
-.notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 15px 20px;
-    border-radius: 5px;
-    color: white;
-    z-index: 1000;
-    animation: slideIn 0.3s ease;
-}
-
-.notification.success {
-    background: #78e08f;
-}
-
-.notification.error {
-    background: #e55039;
-}
-
-.notification.info {
-    background: #60a3bc;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
 /* Responsive para componentes */
 @media (max-width: 768px) {
     .dashboard-grid {
@@ -419,4 +520,36 @@
     .progress-step .step-circle {
         margin: 0;
     }
+
+    /* Responsive para dropdown */
+    .language-dropdown {
+        width: 100%;
+    }
+
+    .dropdown-toggle {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+
+    /* Notificaciones en móvil */
+    .notification {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+
+/* Estilos para cuando el menú lateral está abierto */
+.side-menu.open ~ * .language-dropdown .dropdown-menu {
+    z-index: 1003;
+}
+
+.side-menu.open ~ * .notification {
+    z-index: 1101;
 }

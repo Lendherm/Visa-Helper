@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GovAssist - Servicios de Visa</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #032247;
+            color: white;
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #0067FF;
+        }
+        
+        .btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            color: #032247;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: #032247;
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 40px 0;
+            background-color: #032247;
+            color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-icon {
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        
+        /* Get Started Section */
+        .get-started {
+            padding: 80px 0;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .get-started h2 {
+            font-size: 36px;
+            color: #032247;
+            margin-bottom: 40px;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #032247;
+            font-size: 18px;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: white;
+            transition: border-color 0.3s;
+        }
+        
+        .form-select:focus {
+            outline: none;
+            border-color: #0067FF;
+        }
+        
+        .checkbox-group {
+            margin-top: 10px;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: normal;
+            font-size: 16px;
+        }
+        
+        .checkbox-label input {
+            margin-right: 10px;
+        }
+        
+        .travel-reasons {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+        
+        .travel-reason {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+            background-color: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            min-height: 120px;
+        }
+        
+        .travel-reason:hover {
+            transform: translateY(-5px);
+            border-color: #0067FF;
+            box-shadow: 0 5px 15px rgba(0, 103, 255, 0.1);
+        }
+        
+        .travel-reason.selected {
+            background-color: #e6f0ff;
+            border-color: #0067FF;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 103, 255, 0.2);
+        }
+        
+        .reason-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #f1f5f9;
+            transition: all 0.3s;
+        }
+        
+        .travel-reason.selected .reason-icon {
+            background-color: #0067FF;
+            color: white;
+        }
+        
+        .reason-label {
+            font-weight: 600;
+            color: #032247;
+            font-size: 14px;
+        }
+        
+        .travel-reason input {
+            display: none;
+        }
+        
+        .form-btn {
+            background-color: #0067FF;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .form-btn:hover {
+            background-color: #0052cc;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 60px 0;
+            background-color: #f9fafb;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #032247;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 60px 0;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .testimonials h2 {
+            font-size: 36px;
+            color: #032247;
+            margin-bottom: 40px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 60px 0;
+            background-color: #f9fafb;
+        }
+        
+        .services h2 {
+            font-size: 36px;
+            color: #032247;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card.featured {
+            border: 2px solid #032247;
+            position: relative;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f59e0b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .service-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #032247;
+            margin-bottom: 20px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #032247;
+            margin-bottom: 10px;
+        }
+        
+        .service-note {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .service-btn {
+            background-color: #00b87c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .service-btn:hover {
+            background-color: #009e68;
+        }
+        
+        .service-btn.outline {
+            background-color: transparent;
+            border: 2px solid #032247;
+            color: #032247;
+        }
+        
+        .service-btn.outline:hover {
+            background-color: #032247;
+            color: white;
+        }
+        
+        .service-features {
+            text-align: left;
+            margin-top: 20px;
+        }
+        
+        .service-features p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #032247;
+        }
+        
+        .service-features ul {
+            list-style: none;
+        }
+        
+        .service-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .service-features li:before {
+            content: "✓";
+            color: #032247;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .disclaimer {
+            font-size: 12px;
+            color: #666;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #032247;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-disclaimer {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .btn {
+                margin-top: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-card.featured {
+                order: -1;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .travel-reasons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .travel-reasons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Gov<span>Assist</span></div>
+                <button class="btn">Contactar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Servicios de Visa para EE.UU.</h1>
+            <p>Asistencia experta para visas de turismo, viajes, negocios, estudio y tránsito</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">✈️</div>
+                    <div>
+                        <h3>Visas para EE.UU.</h3>
+                        <p>Turismo, viajes, negocios, estudio y tránsito</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⏰</div>
+                    <div>
+                        <h3>Aplicación Rápida 24/7</h3>
+                        <p>Formulario simplificado disponible en cualquier momento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Started Section -->
+    <section class="get-started">
+        <div class="container">
+            <h2>Comienza Ahora</h2>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="citizenship">¿Cuál es tu nacionalidad?</label>
+                    <select class="form-select" id="citizenship">
+                        <option value="" selected disabled>Selecciona tu país</option>
+                        <option value="mx" selected>México</option>
+                        <option value="ar">Argentina</option>
+                        <option value="co">Colombia</option>
+                        <option value="pe">Perú</option>
+                        <option value="cl">Chile</option>
+                        <option value="es">España</option>
+                        <option value="br">Brasil</option>
+                        <option value="other">Otro país</option>
+                    </select>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="multiple-citizenship">
+                            Tengo más de una nacionalidad
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Selecciona la(s) razón(es) para viajar a Estados Unidos:</label>
+                    <div class="travel-reasons">
+                        <div class="travel-reason" data-value="tourism">
+                            <input type="checkbox" id="tourism">
+                            <div class="reason-icon">🏖️</div>
+                            <div class="reason-label">Turismo o Visita</div>
+                        </div>
+                        <div class="travel-reason" data-value="business">
+                            <input type="checkbox" id="business">
+                            <div class="reason-icon">💼</div>
+                            <div class="reason-label">Negocios</div>
+                        </div>
+                        <div class="travel-reason" data-value="transit">
+                            <input type="checkbox" id="transit">
+                            <div class="reason-icon">✈️</div>
+                            <div class="reason-label">Tránsito</div>
+                        </div>
+                        <div class="travel-reason" data-value="study">
+                            <input type="checkbox" id="study">
+                            <div class="reason-icon">🎓</div>
+                            <div class="reason-label">Estudio</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="form-btn">Continuar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">200k+</div>
+                    <div class="stat-label">Clientes Satisfechos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Años de Experiencia</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">Entrega a Tiempo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Lo Que Dicen Nuestros Clientes</h2>
+            <p class="testimonial-text">"El proceso para obtener mi visa fue increíblemente fácil con GovAssist. Me guiaron en cada paso y respondieron todas mis preguntas rápidamente. ¡Altamente recomendado!"</p>
+            <p>- María José, Visa de Turista EE.UU.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <!-- ESTA Service -->
+                <div class="service-card">
+                    <div class="service-title">U.S. ESTA</div>
+                    <div class="service-price">$98</div>
+                    <div class="service-note">*Las tarifas gubernamentales <strong>ESTÁN</strong> incluidas</div>
+                    <button class="service-btn outline">¡Comenzar ahora!</button>
+                    <div class="service-features">
+                        <p>Obtén asistencia durante todo tu proceso ESTA:</p>
+                        <ul>
+                            <li>Tu consultor personal de visa</li>
+                            <li>Soporte ilimitado 24/7, en cualquier lugar</li>
+                            <li>Herramientas digitales fáciles de usar que garantizan alta tasa de aprobación</li>
+                            <li>Décadas de experiencia</li>
+                            <li>Reprocesamiento de cortesía por única vez</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Visa Service (Featured) -->
+                <div class="service-card featured">
+                    <div class="featured-badge">Mejor Valor</div>
+                    <div class="service-title">Servicio de Visa para EE.UU.</div>
+                    <div class="service-price">$175</div>
+                    <div class="service-note">*Las tarifas gubernamentales <strong>NO</strong> están incluidas</div>
+                    <button class="service-btn">¡Comenzar ahora!</button>
+                    <div class="service-features">
+                        <p>Características incluidas en el paquete:</p>
+                        <ul>
+                            <li>Todos los beneficios de un consultor personal de visa</li>
+                            <li>Soporte ilimitado 24/7, en cualquier parte del mundo</li>
+                            <li>Herramientas digitales fáciles de usar</li>
+                            <li>Décadas de experiencia</li>
+                            <li>Revisión de aplicación, carta de invitación, guía de entrevista</li>
+                            <li>Mucho más…</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- VIP Service -->
+                <div class="service-card">
+                    <div class="service-title">Visa VIP para EE.UU.</div>
+                    <div class="service-price">$495</div>
+                    <div class="service-note">*Las tarifas gubernamentales <strong>NO</strong> están incluidas</div>
+                    <button class="service-btn outline">¡Comenzar ahora!</button>
+                    <div class="service-features">
+                        <p>Ideal para rechazos previos, revocaciones, estadías excedidas, antecedentes penales, DUI, entrevistas que te ponen nervioso:</p>
+                        <ul>
+                            <li>Incluye TODAS las características del Servicio de Visa para EE.UU.</li>
+                            <li>Consulta privada de 30 minutos con un ex-oficial de visa real</li>
+                            <li>Tu asesor personal de visa que conoce tu historial, se anticipa a obstáculos potenciales y evita retrasos innecesarios</li>
+                        </ul>
+                        <p class="disclaimer">* La compra de este servicio no garantiza la aprobación de tu visa, solo que intentaremos encontrar la mejor solución para tu caso.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <div class="logo">Gov<span>Assist</span></div>
+                    </div>
+                    <p class="footer-disclaimer">
+                        Aviso: GovAssist no está afiliado a ninguna agencia o departamento del gobierno de los Estados Unidos. 
+                        Los costos de los servicios de consultoría NO incluyen tarifas gubernamentales de aplicación, 
+                        examen médico, presentación o biométricas.
+                    </p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="#">Términos de Uso</a>
+                <a href="#">Términos de Servicio</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Aviso Legal</a>
+                <a href="#">Política de Reembolso</a>
+            </div>
+            <div class="footer-bottom">
+                <p>Proyecto Escolar - GovAssist &copy; 2023. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Funcionalidad para los botones
+        document.querySelectorAll('.service-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                alert('¡Gracias por tu interés! Esta es una demostración para un proyecto escolar.');
+            });
+        });
+        
+        document.querySelector('.btn').addEventListener('click', () => {
+            alert('¡Gracias por tu interés en contactarnos! Esta es una demostración para un proyecto escolar.');
+        });
+        
+        // Funcionalidad para las opciones de viaje
+        document.querySelectorAll('.travel-reason').forEach(reason => {
+            reason.addEventListener('click', () => {
+                const checkbox = reason.querySelector('input');
+                checkbox.checked = !checkbox.checked;
+                reason.classList.toggle('selected', checkbox.checked);
+            });
+        });
+        
+        // Funcionalidad para el formulario principal
+        document.querySelector('.form-btn').addEventListener('click', () => {
+            const citizenship = document.getElementById('citizenship').value;
+            if (!citizenship) {
+                alert('Por favor selecciona tu nacionalidad.');
+                return;
+            }
+            
+            const selectedReasons = Array.from(document.querySelectorAll('.travel-reason input:checked'))
+                .map(checkbox => {
+                    const reason = checkbox.closest('.travel-reason');
+                    return reason.querySelector('.reason-label').textContent;
+                })
+                .join(', ');
+            
+            if (!selectedReasons) {
+                alert('Por favor selecciona al menos una razón de viaje.');
+                return;
+            }
+            
+            const multipleCitizenship = document.getElementById('multiple-citizenship').checked;
+            
+            alert(`¡Perfecto! 
+Nacionalidad: ${document.getElementById('citizenship').options[document.getElementById('citizenship').selectedIndex].text}
+${multipleCitizenship ? 'Tienes múltiples nacionalidades' : ''}
+Razones de viaje: ${selectedReasons}
+Esta es una demostración para un proyecto escolar.`);
+        });
+    </script>
+</body>
+</html>
