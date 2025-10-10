@@ -1,424 +1,300 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visa Helper - Asistente para Trámites de Visa</title>
-
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/components.css">
-
-    <!-- JavaScript Files -->
-    <script type="module" src="./scripts/api-service.js"></script>
-    <script type="module" src="./scripts/app.js"></script>
-    <script type="module" src="./scripts/form-manager.js"></script>
-    <script type="module" src="./scripts/page-translator.js"></script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="https://apis.google.com/js/api.js"></script>
+    <title>GoGainzer: Servicios de Visa e Inmigración</title>
+    <link rel="stylesheet" href="./styles/gogainzer.css">
 </head>
-
 <body>
-    <header class="site-header">
-        <div class="container">
-            <div class="menu-icon" id="menu-toggle">
-                <span class="menu-icon-symbol">&#9776;</span>
-                <span class="menu-icon-text">Menú</span>
-            </div>
+    <!-- Header -->
+<header>
+    <div class="container header-content">
+        <!-- Logo -->
+        <a href="/" class="logo">Go<span>Gainzer</span></a>
 
-            <div class="anniversary">
-                <div class="anniversary-title">Tu Asistente</div>
-                <div class="anniversary-year">Visa Helper</div>
-                <div class="anniversary-text">para trámites de visa</div>
-            </div>
-
-            <div class="logo">
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMjAwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjMGEzZDYyIi8+Cjx0ZXh0IHg9IjEwMCIgeT0iMzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlZJU0EgSEVMRUVSPC90ZXh0Pgo8L3N2Zz4K"
-                    alt="Logo Visa Helper">
-            </div>
-
-            <div class="header-controls">
-                <button class="translate-btn" id="translate-page-btn">
-                    <i class="bi bi-translate"></i> Traducir Página
-                </button>
-                <a href="#" class="affiliate-button" id="start-process">INICIAR PROCESO</a>
-            </div>
+        <!-- Botón hamburguesa -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    </header>
 
-    <!-- Menú lateral -->
-    <div class="overlay" id="overlay"></div>
-    <div class="side-menu" id="side-menu">
-        <nav>
-            <h2>Menú Principal</h2>
+        <!-- Menú de navegación -->
+        <nav id="nav-menu">
             <ul>
-                <li><a href="#" data-section="dashboard"><i class="bi bi-house-door"></i> Dashboard</a></li>
-                <li><a href="#" data-section="process"><i class="bi bi-journey"></i> Mi Proceso</a></li>
-                <li><a href="#" data-section="forms"><i class="bi bi-file-earmark-text"></i> Formularios</a></li>
-                <li><a href="#" data-section="documents"><i class="bi bi-folder"></i> Documentos</a></li>
-                <li><a href="#" data-section="appointments"><i class="bi bi-calendar-check"></i> Citas</a></li>
-                <li><a href="#" data-section="tracking"><i class="bi bi-graph-up"></i> Seguimiento</a></li>
-                <li><a href="#" data-section="resources"><i class="bi bi-info-circle"></i> Recursos</a></li>
-                <li><a href="#" data-section="profile"><i class="bi bi-person"></i> Mi Perfil</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#faq">Preguntas Frecuentes</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+
+                <li><a href="/PortalVisaHelper/index.html" class="btn">Ingresar</a></li>
             </ul>
-
-            <div class="sidebar-content">
-                <h3>Progreso Actual</h3>
-                <div class="progress-container">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill" style="width: 25%"></div>
-                    </div>
-                    <p id="progress-text">25% completado</p>
-                </div>
-
-                <h4>Próximos Vencimientos</h4>
-                <div id="deadlines-list" class="deadlines">
-                    <div class="deadline-item">Formulario DS-160 - 15 días</div>
-                    <div class="deadline-item">Cita en embajada - 30 días</div>
-                </div>
-
-                <h4>Estadísticas</h4>
-                <div class="statistics">
-                    <p><strong>Formularios:</strong> <span id="forms-completed">2</span>/8</p>
-                    <p><strong>Documentos:</strong> <span id="docs-uploaded">3</span>/12</p>
-                    <p><strong>Citas:</strong> <span id="appointments-scheduled">1</span>/3</p>
-                </div>
-
-                <!-- Sección de APIs -->
-                <h4>Información en Tiempo Real</h4>
-                <div class="api-info">
-                    <div class="api-item">
-                        <strong>Traducción:</strong>
-                        <span id="translation-status" class="api-status">Disponible</span>
-                    </div>
-                    <div class="api-item">
-                        <strong>Países:</strong>
-                        <span id="countries-status" class="api-status">Cargando...</span>
-                    </div>
-                    <div class="api-item">
-                        <strong>Calendario:</strong>
-                        <span id="calendar-status" class="api-status">Conectado</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contact-info">
-                <p><i class="bi bi-info-circle"></i> Información oficial:
-                    <a href="https://travel.state.gov">travel.state.gov</a>
-                </p>
-                <p><i class="bi bi-clock"></i> Tiempo promedio: 3-6 meses</p>
-                <p><i class="bi bi-currency-dollar"></i> Costos: $185 - $500 USD</p>
-            </div>
         </nav>
+
+        
     </div>
+</header>
 
-    <main id="main-content">
-        <!-- Dashboard -->
-        <div id="dashboard" class="content-section active">
-            <div class="welcome-banner">
-                <h1>Bienvenido a Visa Helper</h1>
-                <p>Tu asistente personal para trámites de visa americana</p>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Asistencia Experta para Documentación de Viaje</h1>
+            <p>Asistencia rápida y precisa con documentos de viaje para una experiencia sin complicaciones</p>
+            <a href="/US_Visa/US_Visa.html" class="btn">Comenzar Ahora</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por Qué Elegirnos</h2>
+                <p>Ofrecemos servicios confiables y seguros para todas tus necesidades de documentación de viaje</p>
             </div>
-
-            <div class="dashboard-grid">
-                <div class="dashboard-card" data-section="forms">
-                    <h3>Formularios</h3>
-                    <p>Completa los formularios requeridos para tu visa</p>
-                    <div class="progress">2/8</div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>✓</i>
+                    </div>
+                    <h3>Confiable</h3>
+                    <p>Soporte 24/7 y tiempo de actividad garantizado para tus trámites importantes</p>
                 </div>
-                <div class="dashboard-card" data-section="documents">
-                    <h3>Documentos</h3>
-                    <p>Sube y organiza los documentos necesarios</p>
-                    <div class="progress">3/12</div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>★</i>
+                    </div>
+                    <h3>Confiado</h3>
+                    <p>Calificaciones excelentes en plataformas de revisión con miles de clientes satisfechos</p>
                 </div>
-                <div class="dashboard-card" data-section="appointments">
-                    <h3>Citas</h3>
-                    <p>Programa y gestiona tus citas</p>
-                    <div class="progress">1/3</div>
-                </div>
-                <div class="dashboard-card" data-section="tracking">
-                    <h3>Seguimiento</h3>
-                    <p>Revisa el estado de tu solicitud</p>
-                    <div class="status">En Proceso</div>
-                </div>
-                <div class="dashboard-card" data-section="process">
-                    <h3>Mi Proceso</h3>
-                    <p>Visualiza el progreso completo de tu trámite</p>
-                    <div class="progress">25%</div>
-                </div>
-                <div class="dashboard-card" data-section="resources">
-                    <h3>Recursos</h3>
-                    <p>Encuentra guías y preguntas frecuentes</p>
-                    <div class="status">Disponible</div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>🛡️</i>
+                    </div>
+                    <h3>Seguro</h3>
+                    <p>Procesos seguros y protección de datos para tu tranquilidad</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Sección de APIs en Dashboard -->
-            <div class="api-dashboard">
-                <h3>Herramientas Integradas</h3>
-                <div class="api-tools">
-                    <div class="api-tool-card">
-                        <i class="bi bi-translate"></i>
-                        <h4>Traductor</h4>
-                        <p>Traduce documentos al instante</p>
-                        <button class="api-tool-btn" onclick="TranslationService.demoTranslate()">Probar
-                            Traductor</button>
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo Que Dicen Nuestros Clientes</h2>
+                <p>Descubre las experiencias de nuestros clientes satisfechos</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "El proceso para obtener mi visa fue increíblemente fácil con GoGainzer. Me guiaron en cada paso y respondieron todas mis preguntas rápidamente. ¡Altamente recomendado!"
                     </div>
-                    <div class="api-tool-card">
-                        <i class="bi bi-globe"></i>
-                        <h4>Información de Países</h4>
-                        <p>Datos actualizados de todos los países</p>
-                        <button class="api-tool-btn" onclick="CountryService.loadCountries()">Cargar Países</button>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div class="author-info">
+                            <h4>María José</h4>
+                            <p>Visa de Turista EE.UU.</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
                     </div>
-                    <div class="api-tool-card">
-                        <i class="bi bi-calendar-plus"></i>
-                        <h4>Recordatorios</h4>
-                        <p>Agrega citas a tu calendario</p>
-                        <button class="api-tool-btn" onclick="CalendarService.demoAddEvent()">Agregar
-                            Recordatorio</button>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Necesitaba renovar mi pasaporte con urgencia y GoGainzer cumplió con el plazo prometido. El servicio al cliente fue excepcional y me mantuvieron informado durante todo el proceso."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">CR</div>
+                        <div class="author-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <p>Renovación de Pasaporte</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Como estudiante internacional, el proceso de visa puede ser abrumador. GoGainzer simplificó todo y me ayudó a preparar la documentación correcta. ¡Obtuve mi visa sin problemas!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AG</div>
+                        <div class="author-info">
+                            <h4>Ana García</h4>
+                            <p>Visa de Estudiante</p>
+                            <div class="rating">★★★★☆</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Trabajé con GoGainzer para mi proceso de residencia y quedé impresionado con su conocimiento y profesionalismo. Valoro mucho su atención personalizada y seguimiento constante."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RL</div>
+                        <div class="author-info">
+                            <h4>Roberto López</h4>
+                            <p>Proceso de Residencia</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Formularios -->
-        <div id="forms" class="content-section">
-            <div class="welcome-banner">
-                <h1>Formularios de Visa</h1>
-                <p>Completa los formularios necesarios paso a paso</p>
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Todo lo que necesitas para tus trámites de viaje e inmigración en un solo lugar</p>
             </div>
-
-            <div class="form-container">
-                <div class="form-progress">
-                    <div class="progress-step active">
-                        <div class="step-circle">1</div>
-                        <div>Información Personal</div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <i>✈️</i>
                     </div>
-                    <div class="progress-step">
-                        <div class="step-circle">2</div>
-                        <div>Información de Viaje</div>
-                    </div>
-                    <div class="progress-step">
-                        <div class="step-circle">3</div>
-                        <div>Antecedentes</div>
-                    </div>
-                    <div class="progress-step">
-                        <div class="step-circle">4</div>
-                        <div>Revisión</div>
+                    <div class="service-content">
+                        <h3>Visas de Viaje</h3>
+                        <p>Asistencia completa para visas de turista, negocios, estudiante y tránsito para destinos alrededor del mundo.</p>
                     </div>
                 </div>
-
-                <form id="visa-form">
-                    <div class="form-step active" id="step-1">
-                        <h3>Información Personal</h3>
-                        <div class="form-group">
-                            <label for="firstName">Nombre(s)</label>
-                            <input type="text" id="firstName" name="firstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Apellidos</label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="birthDate">Fecha de Nacimiento</label>
-                            <input type="date" id="birthDate" name="birthDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="country">País de Nacimiento</label>
-                            <select id="country" name="country" required>
-                                <option value="">Cargando países...</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Teléfono</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <i>📘</i>
                     </div>
-
-                    <div class="form-step" id="step-2">
-                        <h3>Información de Viaje</h3>
-                        <div class="form-group">
-                            <label for="visaType">Tipo de Visa</label>
-                            <select id="visaType" name="visaType" required>
-                                <option value="">Selecciona un tipo</option>
-                                <option value="B1/B2">Turista/Negocios (B1/B2)</option>
-                                <option value="F1">Estudiante (F1)</option>
-                                <option value="H1B">Trabajador (H1B)</option>
-                                <option value="J1">Intercambio (J1)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="purpose">Propósito del Viaje</label>
-                            <textarea id="purpose" name="purpose" rows="4" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="duration">Duración Estimada</label>
-                            <input type="text" id="duration" name="duration" placeholder="Ej: 2 semanas" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="travelDate">Fecha Estimada de Viaje</label>
-                            <input type="date" id="travelDate" name="travelDate" required>
-                        </div>
+                    <div class="service-content">
+                        <h3>Pasaportes</h3>
+                        <p>Renovación y solicitud de nuevos pasaportes con garantía de entrega a tiempo.</p>
                     </div>
-
-                    <div class="form-step" id="step-3">
-                        <h3>Antecedentes</h3>
-                        <div class="form-group">
-                            <label>¿Ha tenido visa americana anteriormente?</label>
-                            <div class="radio-group">
-                                <input type="radio" id="prevVisaYes" name="prevVisa" value="yes">
-                                <label for="prevVisaYes">Sí</label>
-                                <input type="radio" id="prevVisaNo" name="prevVisa" value="no">
-                                <label for="prevVisaNo">No</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>¿Tiene antecedentes penales?</label>
-                            <div class="radio-group">
-                                <input type="radio" id="criminalYes" name="criminal" value="yes">
-                                <label for="criminalYes">Sí</label>
-                                <input type="radio" id="criminalNo" name="criminal" value="no">
-                                <label for="criminalNo">No</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="additionalInfo">Información Adicional</label>
-                            <textarea id="additionalInfo" name="additionalInfo" rows="4"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="button" class="translate-btn" onclick="TranslationService.translateForm()">
-                                <i class="bi bi-translate"></i> Traducir al Inglés
-                            </button>
-                        </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <i>🏠</i>
                     </div>
-
-                    <div class="form-step" id="step-4">
-                        <h3>Revisión</h3>
-                        <div id="form-review">
-                            <!-- Los datos del formulario se mostrarán aquí -->
-                        </div>
-                        <div class="form-group">
-                            <button type="button" class="calendar-btn" onclick="CalendarService.addFormDeadline()">
-                                <i class="bi bi-calendar-plus"></i> Agregar Recordatorio
-                            </button>
-                        </div>
+                    <div class="service-content">
+                        <h3>Inmigración</h3>
+                        <p>Asesoramiento para procesos de inmigración a largo plazo y residencia permanente.</p>
                     </div>
-
-                    <div class="form-navigation">
-                        <button type="button" class="form-btn" id="prev-btn" disabled>Anterior</button>
-                        <button type="button" class="form-btn" id="next-btn">Siguiente</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Documentos -->
-        <div id="documents" class="content-section">
-            <div class="welcome-banner">
-                <h1>Documentos Requeridos</h1>
-                <p>Sube y gestiona todos los documentos necesarios para tu visa</p>
+    <!-- Process Section -->
+    <section class="process" id="proceso">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Proceso en 4 Pasos</h2>
+                <p>Un proceso simple y efectivo para obtener tus documentos de viaje</p>
             </div>
-
-            <div class="documents-grid" id="documents-container">
-                <!-- Los documentos se cargarán dinámicamente -->
-            </div>
-        </div>
-
-        <!-- Citas -->
-        <div id="appointments" class="content-section">
-            <div class="welcome-banner">
-                <h1>Gestión de Citas</h1>
-                <p>Programa y administra tus citas para la visa</p>
-            </div>
-
-            <div class="form-container">
-                <h3>Próximas Citas</h3>
-                <div class="deadlines" id="appointments-list">
-                    <!-- Las citas se cargarán dinámicamente -->
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Completar Solicitud</h4>
+                    <p>Llena nuestro formulario en línea con información sobre tu viaje</p>
                 </div>
-
-                <h3 style="margin-top: 30px;">Programar Nueva Cita</h3>
-                <div class="form-group">
-                    <label for="appointment-type">Tipo de Cita</label>
-                    <select id="appointment-type" name="appointment-type">
-                        <option value="">Selecciona un tipo</option>
-                        <option value="biometrics">Toma de Huellas</option>
-                        <option value="interview">Entrevista</option>
-                        <option value="document-delivery">Entrega de Documentos</option>
-                    </select>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Seleccionar Paquete</h4>
+                    <p>Elige el paquete que se adapte a tus necesidades y presupuesto</p>
                 </div>
-                <div class="form-group">
-                    <label for="appointment-date">Fecha Preferida</label>
-                    <input type="date" id="appointment-date" name="appointment-date">
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Procesamiento</h4>
+                    <p>Revisamos tu aplicación y realizamos todo el trabajo burocrático</p>
                 </div>
-                <div class="form-group">
-                    <label for="appointment-time">Hora Preferida</label>
-                    <select id="appointment-time" name="appointment-time">
-                        <option value="">Selecciona una hora</option>
-                        <option value="09:00">9:00 AM</option>
-                        <option value="10:00">10:00 AM</option>
-                        <option value="11:00">11:00 AM</option>
-                        <option value="13:00">1:00 PM</option>
-                        <option value="14:00">2:00 PM</option>
-                    </select>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Recibir Documentos</h4>
+                    <p>Recibe tus documentos listos para presentar en la frontera</p>
                 </div>
-                <button class="form-btn" onclick="CalendarService.scheduleAppointment()">Programar Cita</button>
             </div>
         </div>
+    </section>
 
-        <!-- Recursos -->
-        <div id="resources" class="content-section">
-            <div class="welcome-banner">
-                <h1>Recursos y Ayuda</h1>
-                <p>Encuentra información útil para tu proceso de visa</p>
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Respuestas a las preguntas más comunes sobre nuestros servicios</p>
             </div>
-
-            <div class="dashboard-grid">
-                <div class="dashboard-card">
-                    <h3>Preguntas Frecuentes</h3>
-                    <p>Resuelve tus dudas más comunes sobre el proceso</p>
-                    <div class="status">25 Preguntas</div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Puedo trabajar en EE.UU. con una visa B1 por un corto tiempo?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        No exactamente. La visa B1 es una visa de negocios destinada solo a una visita temporal, por lo que no se le permite trabajar en los Estados Unidos.
+                    </div>
                 </div>
-                <div class="dashboard-card">
-                    <h3>Guías Paso a Paso</h3>
-                    <p>Sigue nuestras guías detalladas para cada tipo de visa</p>
-                    <div class="status">5 Guías</div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Pueden ayudarme a obtener una visa de estudiante para EE.UU.?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        ¡Claro que sí! Nuestros consultores tienen amplia experiencia solicitando visas de estudiante para estudiantes de todo el mundo.
+                    </div>
                 </div>
-                <div class="dashboard-card">
-                    <h3>Calculadora de Costos</h3>
-                    <p>Estima los gastos de tu proceso de visa</p>
-                    <div class="status">Disponible</div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Cuánto tiempo toma obtener una visa?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Esto depende del tipo de visa que necesites, de dónde estés aplicando y de varios factores personales.
+                    </div>
                 </div>
-                <div class="dashboard-card">
-                    <h3>Checklists Descargables</h3>
-                    <p>Listas de verificación para no olvidar nada</p>
-                    <div class="status">3 Checklists</div>
-                </div>
-            </div>
-
-            <div class="form-container" style="margin-top: 30px;">
-                <h3>Enlaces Oficiales</h3>
-                <ul>
-                    <li><a href="https://travel.state.gov" target="_blank">Departamento de Estado de EE.UU.</a></li>
-                    <li><a href="https://ceac.state.gov" target="_blank">Formulario DS-160 en línea</a></li>
-                    <li><a href="https://ais.usvisa-info.com" target="_blank">Sistema de Información de Visas</a></li>
-                    <li><a href="https://ustraveldocs.com" target="_blank">Centro de Solicitud de Visa</a></li>
-                </ul>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer>
-        <p>&copy; <span id="currentYear"></span> Visa Helper - Proyecto WDD 330</p>
-        <p id="lastModified"></p>
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GoGainzer</h3>
+                    <p>Asistencia experta para visas e inmigración con más de 500,000 casos exitosos.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#">Visas de Viaje</a></li>
+                        <li><a href="#">Pasaportes</a></li>
+                        <li><a href="#">Inmigración</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#proceso">Proceso</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>Email: info@GoGainzer.com</li>
+                        <li>Teléfono: +525550802000</li>
+                        <li>Dirección: Av. P.º de la Reforma 305, Cuauhtémoc, 06500 Ciudad de México, CDMX, Mexico</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Proyecto Escolar - GoGainzer &copy; 2025. Todos los derechos reservados.</p>
+            </div>
+        </div>
     </footer>
 
-
-
+    <script src="./scripts/gogainzer.js"></script>
+    
 </body>
-
 </html>

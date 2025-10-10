@@ -2,20 +2,19 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  root: "src/",       // punto de entrada
-  base: "./",         // rutas relativas
-  server: {
-    host: true,
-    port: 3000        // Vite también corre en 3000 para Netlify Dev
-  },
+  root: "src",
+  base: "./", // rutas relativas
   build: {
     outDir: "../dist",
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "src/index.html"),
-        admin: resolve(__dirname, "src/admin/index.html")
-      }
-    }
+        index: resolve(__dirname, "src/index.html"),
+        usvisa: resolve(__dirname, "src/US_Visa/US_Visa.html"),
+        portal: resolve(__dirname, "src/PortalVisaHelper/index.html"),
+      },
+    },
   },
-  publicDir: resolve(__dirname, "src/public")
+  server: {
+    port: 3000,
+  },
 });

@@ -1,4 +1,4 @@
-
+import { CREDENTIALS } from "./credentials.js";
 
 
 // ===== SERVICIO DE APIS =====
