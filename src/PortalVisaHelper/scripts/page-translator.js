@@ -15,7 +15,7 @@ class PageTranslator {
         };
         this.isTranslating = false;
         this.originalContent = new Map();
-        
+
         this.init();
     }
 
@@ -24,10 +24,35 @@ class PageTranslator {
 
         // Guardar contenido original
         this.saveOriginalContent();
-        
+
         // Crear el menú desplegable
         this.createLanguageDropdown();
     }
+    // Mostrar overlay de carga
+  showLoadingOverlay() {
+    let overlay = document.querySelector('.translation-loading-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'translation-loading-overlay';
+        overlay.innerHTML = `<div class="translation-spinner"></div>`;
+        document.body.appendChild(overlay);
+
+        // Forzar que se renderice antes de traducir
+        window.getComputedStyle(overlay).display;
+    }
+    overlay.style.display = 'flex';
+}
+
+
+    // Ocultar overlay de carga
+    hideLoadingOverlay() {
+        const overlay = document.querySelector('.translation-loading-overlay');
+        if (overlay) {
+            overlay.style.display = 'none';
+        }
+    }
+
+
 
     saveOriginalContent() {
         const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, button, label, li, td, th, div:not(.exclude-translation)');
@@ -106,7 +131,7 @@ class PageTranslator {
                 if (targetLang !== this.currentLanguage && !this.isTranslating) {
                     await this.translatePage(targetLang);
                     this.currentLanguage = targetLang;
-                    
+
                     toggle.innerHTML = `
                         <i class="bi bi-translate"></i> 
                         ${this.languages[targetLang].flag} 
@@ -124,14 +149,18 @@ class PageTranslator {
     }
 
     async translatePage(targetLang) {
-        if (this.isTranslating) {
-            console.log('⚠️ Ya se está traduciendo la página...');
-            return;
-        }
+        if (this.isTranslating) return;
+
+        const toggleBtn = document.querySelector('.language-dropdown .dropdown-toggle');
+        if (!toggleBtn) return;
 
         try {
             this.isTranslating = true;
-            console.log(`🔄 Traduciendo página a ${this.languages[targetLang].name}...`);
+
+            // 🌀 Mostrar pantalla de carga
+            this.showLoadingOverlay();
+
+            console.log(`🔄 Traduciendo a ${targetLang}...`);
 
             const elementsToTranslate = Array.from(this.originalContent.keys());
             const batchSize = 5;
@@ -139,16 +168,25 @@ class PageTranslator {
             for (let i = 0; i < elementsToTranslate.length; i += batchSize) {
                 const batch = elementsToTranslate.slice(i, i + batchSize);
                 await this.translateBatch(batch, targetLang);
-
-                const progress = Math.min(((i + batchSize) / elementsToTranslate.length) * 100, 100);
-                console.log(`📈 Progreso de traducción: ${Math.round(progress)}%`);
             }
 
-            console.log(`✅ Página traducida al ${this.languages[targetLang].name}`);
+            // ✅ Actualizar idioma actual
+            this.currentLanguage = targetLang;
+
+            // Cambiar texto del botón al nuevo idioma
+            toggleBtn.innerHTML = `
+            <i class="bi bi-translate"></i> 
+            ${this.languages[targetLang].flag} 
+            ${this.languages[targetLang].name}
+            <i class="bi bi-chevron-down"></i>
+        `;
+
+            console.log(`✅ Traducción completa a ${targetLang}`);
         } catch (error) {
             console.error('❌ Error en traducción:', error);
         } finally {
             this.isTranslating = false;
+            this.hideLoadingOverlay();
         }
     }
 
@@ -191,6 +229,6 @@ class PageTranslator {
 }
 
 // Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     window.pageTranslator = new PageTranslator();
 });

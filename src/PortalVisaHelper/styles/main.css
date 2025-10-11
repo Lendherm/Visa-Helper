@@ -347,6 +347,39 @@ main {
     color: #aee8d2;
 }
 
+/* ===== OVERLAY DE CARGA ===== */
+.translation-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  backdrop-filter: blur(2px);
+  opacity: 1; /* Asegura que sea visible */
+}
+
+
+/* ===== ANIMACIÓN DE LOGO / SPINNER ===== */
+.translation-spinner {
+  width: 64px;
+  height: 64px;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
 /* Versión responsive */
 @media (max-width: 768px) {
     .logo {
