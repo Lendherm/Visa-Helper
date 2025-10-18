@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a3d62">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>Visa Helper - Asistente para Trámites de Visa</title>
 
     <!-- Bootstrap Icons -->
@@ -24,7 +24,7 @@
     <script type="module" src="./scripts/page-translator.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="https://apis.google.com/js/api.js"></script>
-    
+
 </head>
 
 <body>
@@ -41,7 +41,7 @@
                 <div class="anniversary-text">para trámites de visa</div>
             </div>
 
-           <a href="/" class="logo">Go<span>Gainzer</span></a>
+            <a href="/" class="logo">Go<span>Gainzer</span></a>
 
 
             <div class="header-controls">
@@ -50,7 +50,7 @@
                 </button>
                 <a href="#" class="affiliate-button" id="start-process">INICIAR PROCESO</a>
                 <a href="/" class="affiliate-button">Volver al Inicio</a>
-            
+
             </div>
         </div>
     </header>
@@ -193,8 +193,8 @@
         <!-- Formularios -->
         <div id="forms" class="content-section">
             <div class="welcome-banner">
-                <h1>Formularios de Visa</h1>
-                <p>Completa los formularios necesarios paso a paso</p>
+                <h1>Formularios de Visa DS-160</h1>
+                <p>Completa toda la información requerida para tu visa B1/B2/C1/D</p>
             </div>
 
             <div class="form-container">
@@ -205,117 +205,520 @@
                     </div>
                     <div class="progress-step">
                         <div class="step-circle">2</div>
-                        <div>Información de Viaje</div>
+                        <div>Información de Pasaporte</div>
                     </div>
                     <div class="progress-step">
                         <div class="step-circle">3</div>
-                        <div>Antecedentes</div>
+                        <div>Información de Contacto</div>
                     </div>
                     <div class="progress-step">
                         <div class="step-circle">4</div>
-                        <div>Revisión</div>
+                        <div>Detalles del Viaje</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">5</div>
+                        <div>Contacto en EE.UU.</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">6</div>
+                        <div>Antecedentes Familiares</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">7</div>
+                        <div>Empleo/Educación</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">8</div>
+                        <div>Seguridad y Antecedentes</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">9</div>
+                        <div>Revisión Final</div>
                     </div>
                 </div>
 
                 <form id="visa-form">
+                    <!-- Paso 1: Applicant Information -->
                     <div class="form-step active" id="step-1">
                         <h3>Información Personal</h3>
-                        <div class="form-group">
-                            <label for="firstName">Nombre(s)</label>
-                            <input type="text" id="firstName" name="firstName" required>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Nombres (como en el pasaporte)</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Apellidos (como en el pasaporte)</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="lastName">Apellidos</label>
-                            <input type="text" id="lastName" name="lastName" required>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullNameNative">Nombre completo en idioma nativo</label>
+                                <input type="text" id="fullNameNative" name="fullNameNative">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="birthDate">Fecha de Nacimiento</label>
-                            <input type="date" id="birthDate" name="birthDate" required>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="birthDate">Fecha de Nacimiento</label>
+                                <input type="date" id="birthDate" name="birthDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthCity">Ciudad de Nacimiento</label>
+                                <input type="text" id="birthCity" name="birthCity" required>
+                            </div>
                         </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="birthCountry">País de Nacimiento</label>
+                                <select id="birthCountry" name="birthCountry" required>
+                                    <option value="">Cargando países...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nationality">Nacionalidad</label>
+                                <select id="nationality" name="nationality" required>
+                                    <option value="">Cargando países...</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group">
-                            <label for="country">País de Nacimiento</label>
-                            <select id="country" name="country" required>
+                            <label>Sexo</label>
+                            <div class="radio-group">
+                                <input type="radio" id="genderMale" name="gender" value="Male" required>
+                                <label for="genderMale">Masculino</label>
+                                <input type="radio" id="genderFemale" name="gender" value="Female" required>
+                                <label for="genderFemale">Femenino</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="maritalStatus">Estado Civil</label>
+                            <select id="maritalStatus" name="maritalStatus" required>
+                                <option value="">Seleccionar</option>
+                                <option value="Single">Soltero(a)</option>
+                                <option value="Married">Casado(a)</option>
+                                <option value="Divorced">Divorciado(a)</option>
+                                <option value="Widowed">Viudo(a)</option>
+                                <option value="Separated">Separado(a)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Paso 2: Passport Information -->
+                    <div class="form-step" id="step-2">
+                        <h3>Información de Pasaporte</h3>
+
+                        <div class="form-group">
+                            <label for="passportNumber">Número de Pasaporte</label>
+                            <input type="text" id="passportNumber" name="passportNumber" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="passportIssuanceDate">Fecha de Emisión</label>
+                                <input type="date" id="passportIssuanceDate" name="passportIssuanceDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passportExpiryDate">Fecha de Expiración</label>
+                                <input type="date" id="passportExpiryDate" name="passportExpiryDate" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="passportIssuingCountry">País Emisor del Pasaporte</label>
+                            <select id="passportIssuingCountry" name="passportIssuingCountry" required>
                                 <option value="">Cargando países...</option>
                             </select>
                         </div>
+
                         <div class="form-group">
-                            <label for="phone">Teléfono</label>
-                            <input type="tel" id="phone" name="phone" required>
+                            <label for="passportIssuingAuthority">Autoridad Emisora del Pasaporte</label>
+                            <input type="text" id="passportIssuingAuthority" name="passportIssuingAuthority" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>¿Ha perdido o le han robado un pasaporte?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="lostPassportYes" name="lostPassport" value="yes">
+                                <label for="lostPassportYes">Sí</label>
+                                <input type="radio" id="lostPassportNo" name="lostPassport" value="no" checked>
+                                <label for="lostPassportNo">No</label>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-step" id="step-2">
-                        <h3>Información de Viaje</h3>
+                    <!-- Paso 3: Contact Information -->
+                    <div class="form-step" id="step-3">
+                        <h3>Información de Contacto</h3>
+
                         <div class="form-group">
-                            <label for="visaType">Tipo de Visa</label>
+                            <label for="homeAddress">Dirección de Residencia</label>
+                            <input type="text" id="homeAddress" name="homeAddress" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">Ciudad</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">Estado/Provincia</label>
+                                <input type="text" id="state" name="state" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="zipCode">Código Postal</label>
+                                <input type="text" id="zipCode" name="zipCode" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">País</label>
+                                <select id="country" name="country" required>
+                                    <option value="">Cargando países...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Teléfono Principal</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="secondaryPhone">Teléfono Secundario (opcional)</label>
+                                <input type="tel" id="secondaryPhone" name="secondaryPhone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <!-- Paso 4: Trip Details -->
+                    <div class="form-step" id="step-4">
+                        <h3>Detalles del Viaje</h3>
+
+                        <div class="form-group">
+                            <label for="visaType">Tipo de Visa Solicitada</label>
                             <select id="visaType" name="visaType" required>
-                                <option value="">Selecciona un tipo</option>
+                                <option value="">Seleccionar</option>
                                 <option value="B1/B2">Turista/Negocios (B1/B2)</option>
-                                <option value="F1">Estudiante (F1)</option>
-                                <option value="H1B">Trabajador (H1B)</option>
-                                <option value="J1">Intercambio (J1)</option>
+                                <option value="C1">Tránsito (C1)</option>
+                                <option value="D">Tripulante (D)</option>
                             </select>
                         </div>
+
                         <div class="form-group">
-                            <label for="purpose">Propósito del Viaje</label>
-                            <textarea id="purpose" name="purpose" rows="4" required></textarea>
+                            <label for="purpose">Propósito Específico del Viaje</label>
+                            <textarea id="purpose" name="purpose" rows="4" required
+                                placeholder="Describa en detalle el propósito de su viaje..."></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="duration">Duración Estimada</label>
-                            <input type="text" id="duration" name="duration" placeholder="Ej: 2 semanas" required>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="intendedArrivalDate">Fecha Estimada de Llegada a EE.UU.</label>
+                                <input type="date" id="intendedArrivalDate" name="intendedArrivalDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="intendedDepartureDate">Fecha Estimada de Salida de EE.UU.</label>
+                                <input type="date" id="intendedDepartureDate" name="intendedDepartureDate" required>
+                            </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="travelDate">Fecha Estimada de Viaje</label>
-                            <input type="date" id="travelDate" name="travelDate" required>
+                            <label for="duration">Duración Estimada de la Estancia</label>
+                            <input type="text" id="duration" name="duration" placeholder="Ej: 2 semanas, 30 días"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="usAddress">Dirección donde se alojará en EE.UU.</label>
+                            <input type="text" id="usAddress" name="usAddress" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>¿Ha visitado EE.UU. anteriormente?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="visitedUSYes" name="visitedUS" value="yes">
+                                <label for="visitedUSYes">Sí</label>
+                                <input type="radio" id="visitedUSNo" name="visitedUS" value="no" checked>
+                                <label for="visitedUSNo">No</label>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-step" id="step-3">
-                        <h3>Antecedentes</h3>
+                    <!-- Paso 5: U.S. Contact -->
+                    <div class="form-step" id="step-5">
+                        <h3>Contacto en Estados Unidos</h3>
+
                         <div class="form-group">
-                            <label>¿Ha tenido visa americana anteriormente?</label>
-                            <div class="radio-group">
-                                <input type="radio" id="prevVisaYes" name="prevVisa" value="yes">
-                                <label for="prevVisaYes">Sí</label>
-                                <input type="radio" id="prevVisaNo" name="prevVisa" value="no">
-                                <label for="prevVisaNo">No</label>
+                            <label for="usContactName">Nombre del Contacto en EE.UU.</label>
+                            <input type="text" id="usContactName" name="usContactName">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="usContactOrganization">Organización/Empresa del Contacto</label>
+                            <input type="text" id="usContactOrganization" name="usContactOrganization">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="usContactRelationship">Relación con el Contacto</label>
+                            <select id="usContactRelationship" name="usContactRelationship">
+                                <option value="">Seleccionar</option>
+                                <option value="Friend">Amigo(a)</option>
+                                <option value="Relative">Familiar</option>
+                                <option value="Business">Contacto de Negocios</option>
+                                <option value="Hotel">Hotel</option>
+                                <option value="Other">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="usContactAddress">Dirección del Contacto en EE.UU.</label>
+                            <input type="text" id="usContactAddress" name="usContactAddress">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="usContactPhone">Teléfono del Contacto</label>
+                                <input type="tel" id="usContactPhone" name="usContactPhone">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label>¿Tiene antecedentes penales?</label>
-                            <div class="radio-group">
-                                <input type="radio" id="criminalYes" name="criminal" value="yes">
-                                <label for="criminalYes">Sí</label>
-                                <input type="radio" id="criminalNo" name="criminal" value="no">
-                                <label for="criminalNo">No</label>
+                            <div class="form-group">
+                                <label for="usContactEmail">Email del Contacto</label>
+                                <input type="email" id="usContactEmail" name="usContactEmail">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="additionalInfo">Información Adicional</label>
-                            <textarea id="additionalInfo" name="additionalInfo" rows="4"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="button" class="translate-btn" onclick="TranslationService.translateForm()">
-                                <i class="bi bi-translate"></i> Traducir al Inglés
-                            </button>
                         </div>
                     </div>
 
-                    <div class="form-step" id="step-4">
-                        <h3>Revisión</h3>
+                    <!-- Paso 6: Family Background -->
+                    <div class="form-step" id="step-6">
+                        <h3>Antecedentes Familiares</h3>
+
+                        <div class="form-group">
+                            <label for="fatherName">Nombre Completo del Padre</label>
+                            <input type="text" id="fatherName" name="fatherName">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="motherName">Nombre Completo de la Madre</label>
+                            <input type="text" id="motherName" name="motherName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>¿Algún familiar inmediato es ciudadano o residente permanente de EE.UU.?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="usRelativeYes" name="usRelative" value="yes">
+                                <label for="usRelativeYes">Sí</label>
+                                <input type="radio" id="usRelativeNo" name="usRelative" value="no" checked>
+                                <label for="usRelativeNo">No</label>
+                            </div>
+                        </div>
+
+                        <div id="usRelativeDetails" style="display: none;">
+                            <div class="form-group">
+                                <label for="usRelativeName">Nombre del Familiar</label>
+                                <input type="text" id="usRelativeName" name="usRelativeName">
+                            </div>
+                            <div class="form-group">
+                                <label for="usRelativeRelationship">Parentesco</label>
+                                <select id="usRelativeRelationship" name="usRelativeRelationship">
+                                    <option value="">Seleccionar</option>
+                                    <option value="Spouse">Cónyuge</option>
+                                    <option value="Child">Hijo(a)</option>
+                                    <option value="Parent">Padre/Madre</option>
+                                    <option value="Sibling">Hermano(a)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="usRelativeStatus">Estatus en EE.UU.</label>
+                                <select id="usRelativeStatus" name="usRelativeStatus">
+                                    <option value="">Seleccionar</option>
+                                    <option value="US Citizen">Ciudadano Americano</option>
+                                    <option value="Permanent Resident">Residente Permanente</option>
+                                    <option value="Other">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paso 7: Employment / Education -->
+                    <div class="form-step" id="step-7">
+                        <h3>Empleo y Educación</h3>
+
+                        <div class="form-group">
+                            <label for="occupation">Ocupación Actual</label>
+                            <input type="text" id="occupation" name="occupation" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="employerName">Nombre del Empleador o Escuela</label>
+                            <input type="text" id="employerName" name="employerName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="employerAddress">Dirección del Empleador o Escuela</label>
+                            <input type="text" id="employerAddress" name="employerAddress" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="employerCity">Ciudad</label>
+                                <input type="text" id="employerCity" name="employerCity" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="employerPhone">Teléfono</label>
+                                <input type="tel" id="employerPhone" name="employerPhone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="monthlyIncome">Ingreso Mensual Aproximado (en moneda local)</label>
+                            <input type="text" id="monthlyIncome" name="monthlyIncome" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="educationLevel">Nivel de Educación Más Alto</label>
+                            <select id="educationLevel" name="educationLevel" required>
+                                <option value="">Seleccionar</option>
+                                <option value="Primary">Primaria</option>
+                                <option value="Secondary">Secundaria</option>
+                                <option value="Bachelor">Licenciatura</option>
+                                <option value="Master">Maestría</option>
+                                <option value="Doctorate">Doctorado</option>
+                                <option value="None">Ninguno</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Paso 8: Security Questions -->
+                    <div class="form-step" id="step-8">
+                        <h3>Seguridad y Antecedentes</h3>
+
+                        <div class="security-section">
+                            <h4>Antecedentes de Salud</h4>
+                            <div class="form-group">
+                                <label>¿Tiene algún trastorno físico o mental que pueda afectar su
+                                    comportamiento?</label>
+                                <div class="radio-group">
+                                    <input type="radio" id="healthDisorderYes" name="healthDisorder" value="yes">
+                                    <label for="healthDisorderYes">Sí</label>
+                                    <input type="radio" id="healthDisorderNo" name="healthDisorder" value="no" checked>
+                                    <label for="healthDisorderNo">No</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>¿Es o ha sido adicto a drogas?</label>
+                                <div class="radio-group">
+                                    <input type="radio" id="drugAddictionYes" name="drugAddiction" value="yes">
+                                    <label for="drugAddictionYes">Sí</label>
+                                    <input type="radio" id="drugAddictionNo" name="drugAddiction" value="no" checked>
+                                    <label for="drugAddictionNo">No</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="security-section">
+                            <h4>Antecedentes Penales</h4>
+                            <div class="form-group">
+                                <label>¿Ha sido arrestado o condenado por algún delito?</label>
+                                <div class="radio-group">
+                                    <input type="radio" id="criminalYes" name="criminal" value="yes">
+                                    <label for="criminalYes">Sí</label>
+                                    <input type="radio" id="criminalNo" name="criminal" value="no" checked>
+                                    <label for="criminalNo">No</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>¿Ha violado leyes de inmigración en cualquier país?</label>
+                                <div class="radio-group">
+                                    <input type="radio" id="immigrationViolationYes" name="immigrationViolation"
+                                        value="yes">
+                                    <label for="immigrationViolationYes">Sí</label>
+                                    <input type="radio" id="immigrationViolationNo" name="immigrationViolation"
+                                        value="no" checked>
+                                    <label for="immigrationViolationNo">No</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="security-section">
+                            <h4>Actividades Específicas</h4>
+                            <div class="form-group">
+                                <label>¿Ha participado en actividades terroristas o de espionaje?</label>
+                                <div class="radio-group">
+                                    <input type="radio" id="terrorismYes" name="terrorism" value="yes">
+                                    <label for="terrorismYes">Sí</label>
+                                    <input type="radio" id="terrorismNo" name="terrorism" value="no" checked>
+                                    <label for="terrorismNo">No</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>¿Ha intentado obtener una visa mediante fraude?</label>
+                                <div class="radio-group">
+                                    <input type="radio" id="visaFraudYes" name="visaFraud" value="yes">
+                                    <label for="visaFraudYes">Sí</label>
+                                    <input type="radio" id="visaFraudNo" name="visaFraud" value="no" checked>
+                                    <label for="visaFraudNo">No</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additionalSecurityInfo">Información Adicional de Seguridad</label>
+                            <textarea id="additionalSecurityInfo" name="additionalSecurityInfo" rows="4"
+                                placeholder="Si respondió 'Sí' a alguna pregunta anterior, proporcione detalles..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Paso 9: Review & Certification -->
+                    <div class="form-step" id="step-9">
+                        <h3>Revisión y Certificación</h3>
+
                         <div id="form-review">
                             <!-- Los datos del formulario se mostrarán aquí -->
                         </div>
-                        <div class="form-group">
-                            <button type="button" class="calendar-btn" onclick="CalendarService.addFormDeadline()">
-                                <i class="bi bi-calendar-plus"></i> Agregar Recordatorio
-                            </button>
+
+                        <div class="certification-section">
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="certifyTruthful" name="certifyTruthful" required>
+                                    <span>Certifico que toda la información proporcionada en esta solicitud es veraz y
+                                        completa</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="understandPenalties" name="understandPenalties" required>
+                                    <span>Comprendo que proporcionar información falsa puede resultar en la negación
+                                        permanente de la visa</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="authorizeUse" name="authorizeUse" required>
+                                    <span>Autorizo el uso de mi información para fines de procesamiento de visa</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
-
                     <div class="form-navigation">
                         <button type="button" class="form-btn" id="prev-btn" disabled>Anterior</button>
                         <button type="button" class="form-btn" id="next-btn">Siguiente</button>
+                        <button type="submit" class="form-btn" id="submit-btn" style="display: none;">Enviar
+                            Solicitud</button>
                     </div>
                 </form>
             </div>
