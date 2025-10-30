@@ -4,258 +4,312 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoGainzer: Servicios de Visa e Inmigración</title>
+    <meta name="description" content="Asistencia experta para visas e inmigración. Más de 500,000 casos exitosos. Servicios de visa, pasaportes y procesos de inmigración.">
     <link rel="stylesheet" href="./styles/gogainzer.css">
+    <style>
+        /* Mejoras de contraste y accesibilidad */
+        .author-avatar {
+            background-color: #2c5aa0;
+            color: #ffffff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .faq p, .section-title p {
+            color: #333333;
+        }
+        
+        /* Mejoras de estructura semántica */
+        h1, h2, h3, h4 {
+            margin: 0 0 1rem 0;
+        }
+        
+        h2 {
+            font-size: 2rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        h4 {
+            font-size: 1.25rem;
+        }
+        
+        /* Mejoras de navegación por teclado */
+        a:focus, button:focus {
+            outline: 2px solid #2c5aa0;
+            outline-offset: 2px;
+        }
+        
+        /* Mejoras de legibilidad */
+        body {
+            line-height: 1.6;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
+    <!-- Punto de referencia para navegación -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
     <!-- Header -->
-<header>
-    <div class="container header-content">
-        <!-- Logo -->
-        <a href="/" class="logo">Go<span>Gainzer</span></a>
+    <header role="banner">
+        <div class="container header-content">
+            <!-- Logo -->
+            <a href="/" class="logo">Go<span>Gainzer</span></a>
 
-        <!-- Botón hamburguesa -->
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+            <!-- Botón hamburguesa -->
+            <button class="hamburger" id="hamburger" aria-label="Menú principal" aria-expanded="false" aria-controls="nav-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Menú de navegación -->
+            <nav id="nav-menu" role="navigation" aria-label="Navegación principal">
+                <ul>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#proceso">Proceso</a></li>
+                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="/PortalVisaHelper/index.html" class="btn">Ingresar</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <!-- Menú de navegación -->
-        <nav id="nav-menu">
-            <ul>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#testimonios">Testimonios</a></li>
-                <li><a href="#proceso">Proceso</a></li>
-                <li><a href="#faq">Preguntas Frecuentes</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-
-                <li><a href="/PortalVisaHelper/index.html" class="btn">Ingresar</a></li>
-            </ul>
-        </nav>
-
-        
-    </div>
-</header>
-
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Asistencia Experta para Documentación de Viaje</h1>
-            <p>Asistencia rápida y precisa con documentos de viaje para una experiencia sin complicaciones</p>
-            <a href="/US_Visa/US_Visa.html" class="btn">Comenzar Ahora</a>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Por Qué Elegirnos</h2>
-                <p>Ofrecemos servicios confiables y seguros para todas tus necesidades de documentación de viaje</p>
+    <!-- Contenido principal -->
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="container">
+                <h1 id="hero-heading">Asistencia Experta para Documentación de Viaje</h1>
+                <p>Asistencia rápida y precisa con documentos de viaje para una experiencia sin complicaciones</p>
+                <a href="/US_Visa/US_Visa.html" class="btn">Comenzar Ahora</a>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i>✓</i>
-                    </div>
-                    <h3>Confiable</h3>
-                    <p>Soporte 24/7 y tiempo de actividad garantizado para tus trámites importantes</p>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" aria-labelledby="features-heading">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="features-heading">Por Qué Elegirnos</h2>
+                    <p>Ofrecemos servicios confiables y seguros para todas tus necesidades de documentación de viaje</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i>★</i>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <i>✓</i>
+                        </div>
+                        <h3>Confiable</h3>
+                        <p>Soporte 24/7 y tiempo de actividad garantizado para tus trámites importantes</p>
                     </div>
-                    <h3>Confiado</h3>
-                    <p>Calificaciones excelentes en plataformas de revisión con miles de clientes satisfechos</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i>🛡️</i>
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <i>★</i>
+                        </div>
+                        <h3>Confiado</h3>
+                        <p>Calificaciones excelentes en plataformas de revisión con miles de clientes satisfechos</p>
                     </div>
-                    <h3>Seguro</h3>
-                    <p>Procesos seguros y protección de datos para tu tranquilidad</p>
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <i>🛡️</i>
+                        </div>
+                        <h3>Seguro</h3>
+                        <p>Procesos seguros y protección de datos para tu tranquilidad</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonios">
-        <div class="container">
-            <div class="section-title">
-                <h2>Lo Que Dicen Nuestros Clientes</h2>
-                <p>Descubre las experiencias de nuestros clientes satisfechos</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "El proceso para obtener mi visa fue increíblemente fácil con GoGainzer. Me guiaron en cada paso y respondieron todas mis preguntas rápidamente. ¡Altamente recomendado!"
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonios" aria-labelledby="testimonials-heading">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="testimonials-heading">Lo Que Dicen Nuestros Clientes</h2>
+                    <p>Descubre las experiencias de nuestros clientes satisfechos</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "El proceso para obtener mi visa fue increíblemente fácil con GoGainzer. Me guiaron en cada paso y respondieron todas mis preguntas rápidamente. ¡Altamente recomendado!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" aria-hidden="true">MJ</div>
+                            <div class="author-info">
+                                <h3>María José</h3>
+                                <p>Visa de Turista EE.UU.</p>
+                                <div class="rating" aria-label="Calificación: 5 estrellas">★★★★★</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">MJ</div>
-                        <div class="author-info">
-                            <h4>María José</h4>
-                            <p>Visa de Turista EE.UU.</p>
-                            <div class="rating">★★★★★</div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Necesitaba renovar mi pasaporte con urgencia y GoGainzer cumplió con el plazo prometido. El servicio al cliente fue excepcional y me mantuvieron informado durante todo el proceso."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" aria-hidden="true">CR</div>
+                            <div class="author-info">
+                                <h3>Carlos Rodríguez</h3>
+                                <p>Renovación de Pasaporte</p>
+                                <div class="rating" aria-label="Calificación: 5 estrellas">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Como estudiante internacional, el proceso de visa puede ser abrumador. GoGainzer simplificó todo y me ayudó a preparar la documentación correcta. ¡Obtuve mi visa sin problemas!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" aria-hidden="true">AG</div>
+                            <div class="author-info">
+                                <h3>Ana García</h3>
+                                <p>Visa de Estudiante</p>
+                                <div class="rating" aria-label="Calificación: 4 estrellas">★★★★☆</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Trabajé con GoGainzer para mi proceso de residencia y quedé impresionado con su conocimiento y profesionalismo. Valoro mucho su atención personalizada y seguimiento constante."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" aria-hidden="true">RL</div>
+                            <div class="author-info">
+                                <h3>Roberto López</h3>
+                                <p>Proceso de Residencia</p>
+                                <div class="rating" aria-label="Calificación: 5 estrellas">★★★★★</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Necesitaba renovar mi pasaporte con urgencia y GoGainzer cumplió con el plazo prometido. El servicio al cliente fue excepcional y me mantuvieron informado durante todo el proceso."
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="servicios" aria-labelledby="services-heading">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="services-heading">Nuestros Servicios</h2>
+                    <p>Todo lo que necesitas para tus trámites de viaje e inmigración en un solo lugar</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-img" aria-hidden="true">
+                            <i>✈️</i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Visas de Viaje</h3>
+                            <p>Asistencia completa para visas de turista, negocios, estudiante y tránsito para destinos alrededor del mundo.</p>
+                        </div>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">CR</div>
-                        <div class="author-info">
-                            <h4>Carlos Rodríguez</h4>
-                            <p>Renovación de Pasaporte</p>
-                            <div class="rating">★★★★★</div>
+                    <div class="service-card">
+                        <div class="service-img" aria-hidden="true">
+                            <i>📘</i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Pasaportes</h3>
+                            <p>Renovación y solicitud de nuevos pasaportes con garantía de entrega a tiempo.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-img" aria-hidden="true">
+                            <i>🏠</i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Inmigración</h3>
+                            <p>Asesoramiento para procesos de inmigración a largo plazo y residencia permanente.</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Como estudiante internacional, el proceso de visa puede ser abrumador. GoGainzer simplificó todo y me ayudó a preparar la documentación correcta. ¡Obtuve mi visa sin problemas!"
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process" id="proceso" aria-labelledby="process-heading">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="process-heading">Nuestro Proceso en 4 Pasos</h2>
+                    <p>Un proceso simple y efectivo para obtener tus documentos de viaje</p>
+                </div>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number" aria-hidden="true">1</div>
+                        <h3>Completar Solicitud</h3>
+                        <p>Llena nuestro formulario en línea con información sobre tu viaje</p>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AG</div>
-                        <div class="author-info">
-                            <h4>Ana García</h4>
-                            <p>Visa de Estudiante</p>
-                            <div class="rating">★★★★☆</div>
+                    <div class="step">
+                        <div class="step-number" aria-hidden="true">2</div>
+                        <h3>Seleccionar Paquete</h3>
+                        <p>Elige el paquete que se adapte a tus necesidades y presupuesto</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number" aria-hidden="true">3</div>
+                        <h3>Procesamiento</h3>
+                        <p>Revisamos tu aplicación y realizamos todo el trabajo burocrático</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number" aria-hidden="true">4</div>
+                        <h3>Recibir Documentos</h3>
+                        <p>Recibe tus documentos listos para presentar en la frontera</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq" id="faq" aria-labelledby="faq-heading">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="faq-heading">Preguntas Frecuentes</h2>
+                    <p>Respuestas a las preguntas más comunes sobre nuestros servicios</p>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                            ¿Puedo trabajar en EE.UU. con una visa B1 por un corto tiempo?
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <div id="faq-answer-1" class="faq-answer" hidden>
+                            <p>No exactamente. La visa B1 es una visa de negocios destinada solo a una visita temporal, por lo que no se le permite trabajar en los Estados Unidos.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+                            ¿Pueden ayudarme a obtener una visa de estudiante para EE.UU.?
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <div id="faq-answer-2" class="faq-answer" hidden>
+                            <p>¡Claro que sí! Nuestros consultores tienen amplia experiencia solicitando visas de estudiante para estudiantes de todo el mundo.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+                            ¿Cuánto tiempo toma obtener una visa?
+                            <span aria-hidden="true">+</span>
+                        </button>
+                        <div id="faq-answer-3" class="faq-answer" hidden>
+                            <p>Esto depende del tipo de visa que necesites, de dónde estés aplicando y de varios factores personales.</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Trabajé con GoGainzer para mi proceso de residencia y quedé impresionado con su conocimiento y profesionalismo. Valoro mucho su atención personalizada y seguimiento constante."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">RL</div>
-                        <div class="author-info">
-                            <h4>Roberto López</h4>
-                            <p>Proceso de Residencia</p>
-                            <div class="rating">★★★★★</div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="servicios">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestros Servicios</h2>
-                <p>Todo lo que necesitas para tus trámites de viaje e inmigración en un solo lugar</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-img">
-                        <i>✈️</i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Visas de Viaje</h3>
-                        <p>Asistencia completa para visas de turista, negocios, estudiante y tránsito para destinos alrededor del mundo.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img">
-                        <i>📘</i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Pasaportes</h3>
-                        <p>Renovación y solicitud de nuevos pasaportes con garantía de entrega a tiempo.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img">
-                        <i>🏠</i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Inmigración</h3>
-                        <p>Asesoramiento para procesos de inmigración a largo plazo y residencia permanente.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process" id="proceso">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestro Proceso en 4 Pasos</h2>
-                <p>Un proceso simple y efectivo para obtener tus documentos de viaje</p>
-            </div>
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h4>Completar Solicitud</h4>
-                    <p>Llena nuestro formulario en línea con información sobre tu viaje</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h4>Seleccionar Paquete</h4>
-                    <p>Elige el paquete que se adapte a tus necesidades y presupuesto</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h4>Procesamiento</h4>
-                    <p>Revisamos tu aplicación y realizamos todo el trabajo burocrático</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h4>Recibir Documentos</h4>
-                    <p>Recibe tus documentos listos para presentar en la frontera</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <div class="section-title">
-                <h2>Preguntas Frecuentes</h2>
-                <p>Respuestas a las preguntas más comunes sobre nuestros servicios</p>
-            </div>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        ¿Puedo trabajar en EE.UU. con una visa B1 por un corto tiempo?
-                        <span>+</span>
-                    </div>
-                    <div class="faq-answer">
-                        No exactamente. La visa B1 es una visa de negocios destinada solo a una visita temporal, por lo que no se le permite trabajar en los Estados Unidos.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        ¿Pueden ayudarme a obtener una visa de estudiante para EE.UU.?
-                        <span>+</span>
-                    </div>
-                    <div class="faq-answer">
-                        ¡Claro que sí! Nuestros consultores tienen amplia experiencia solicitando visas de estudiante para estudiantes de todo el mundo.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        ¿Cuánto tiempo toma obtener una visa?
-                        <span>+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Esto depende del tipo de visa que necesites, de dónde estés aplicando y de varios factores personales.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer id="contacto">
+    <footer id="contacto" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
@@ -265,9 +319,9 @@
                 <div class="footer-column">
                     <h3>Servicios</h3>
                     <ul>
-                        <li><a href="#">Visas de Viaje</a></li>
-                        <li><a href="#">Pasaportes</a></li>
-                        <li><a href="#">Inmigración</a></li>
+                        <li><a href="#servicios">Visas de Viaje</a></li>
+                        <li><a href="#servicios">Pasaportes</a></li>
+                        <li><a href="#servicios">Inmigración</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -294,65 +348,80 @@
         </div>
     </footer>
 
-   
-<script>
-  // Funcionalidad para las preguntas frecuentes
-  document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-          const item = question.parentElement;
-          item.classList.toggle('active');
+    <script>
+        // Funcionalidad para las preguntas frecuentes (accesible)
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const isExpanded = question.getAttribute('aria-expanded') === 'true';
+                const answerId = question.getAttribute('aria-controls');
+                const answer = document.getElementById(answerId);
+                
+                // Cambiar estado
+                question.setAttribute('aria-expanded', !isExpanded);
+                answer.hidden = isExpanded;
+                
+                // Cambiar el símbolo
+                const symbol = question.querySelector('span');
+                symbol.textContent = !isExpanded ? '-' : '+';
+            });
+        });
 
-          // Cambiar el símbolo
-          const symbol = question.querySelector('span');
-          symbol.textContent = item.classList.contains('active') ? '-' : '+';
-      });
-  });
+        // Funcionalidad para los botones
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+                if (button.textContent.trim() === 'Comenzar Ahora' && button.closest('.hero')) {
+                    window.location.href = './US_Visa/US_Visa.html';
+                    return;
+                }
 
-  // Funcionalidad para los botones
-  document.querySelectorAll('.btn').forEach(button => {
-      button.addEventListener('click', (event) => {
-          if (button.textContent.trim() === 'Comenzar Ahora' && button.closest('.hero')) {
-              window.location.href = './US_Visa/US_Visa.html';
-              return;
-          }
+                if (button.textContent.trim() === 'Ingresar') {
+                    window.location.href = './PortalVisaHelper/index.html';
+                    return;
+                }
 
-          if (button.textContent.trim() === 'Ingresar') {
-              window.location.href = './PortalVisaHelper/index.html';
-              return;
-          }
+                alert('¡Gracias por tu interés! Esta es una demostración para un proyecto escolar.');
+                event.preventDefault();
+            });
+        });
 
-          alert('¡Gracias por tu interés! Esta es una demostración para un proyecto escolar.');
-          event.preventDefault();
-      });
-  });
+        // Smooth scroll para los enlaces de navegación
+        const navMenu = document.getElementById('nav-menu');
+        const hamburger = document.getElementById('hamburger');
 
-  // Smooth scroll para los enlaces de navegación
-  const navMenu = document.getElementById('nav-menu');
-  const hamburger = document.getElementById('hamburger');
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
 
-  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
 
-          if (navMenu.classList.contains('active')) {
-              navMenu.classList.remove('active');
-              hamburger.classList.remove('active');
-          }
-      });
-  });
+        // Toggle menú hamburguesa
+        hamburger.addEventListener('click', () => {
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+        });
 
-  // Toggle menú hamburguesa
-  hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      hamburger.classList.toggle('active');
-  });
-</script>
-
-
-    
+        // Enlace para saltar al contenido (accesibilidad)
+        document.querySelector('.skip-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.setAttribute('tabindex', '-1');
+                target.focus();
+                setTimeout(() => target.removeAttribute('tabindex'), 1000);
+            }
+        });
+    </script>
 </body>
 </html>
