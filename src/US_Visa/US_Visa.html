@@ -5,203 +5,213 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoGainzer - Servicios de Visa para EE.UU.</title>
     <meta name="description" content="Servicios expertos de visa para Estados Unidos. Asistencia para visas de turismo, negocios, estudio y tránsito con alta tasa de aprobación.">
-    <link rel="stylesheet" href="./us-visa.css">
-    <script type="module" src="./us-visa.js"></script>
+    <link rel="stylesheet" href="us-visa.css">
 </head>
 <body>
+    <!-- Skip link para accesibilidad -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
     <!-- Header -->
-    <header>
+    <header role="banner">
         <div class="container">
             <div class="header-content">
-                <a href="/" class="logo">Go<span>Gainzer</span></a>
+                <a href="/" class="logo" aria-label="GoGainzer - Inicio">Go<span>Gainzer</span></a>
                 <a href="/PortalVisaHelper/index.html" class="btn">Ingresar</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Servicios de Visa para EE.UU.</h1>
-            <p>Asistencia experta para visas de turismo, viajes, negocios, estudio y tránsito</p>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="visually-hidden">Características de Nuestro Servicio</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">✈️</div>
-                    <div>
-                        <h3>Visas para EE.UU.</h3>
-                        <p>Turismo, viajes, negocios, estudio y tránsito</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">⏰</div>
-                    <div>
-                        <h3>Aplicación Rápida 24/7</h3>
-                        <p>Formulario simplificado disponible en cualquier momento</p>
-                    </div>
-                </div>
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Servicios de Visa para EE.UU.</h1>
+                <p>Asistencia experta para visas de turismo, viajes, negocios, estudio y tránsito</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Get Started Section -->
-    <section class="get-started">
-        <div class="container">
-            <h2>Comienza Ahora</h2>
-            <div class="form-container">
-                <div class="form-group">
-                    <label for="citizenship">¿Cuál es tu nacionalidad?</label>
-                    <select class="form-select" id="citizenship">
-                        <option value="" selected disabled>Selecciona tu país</option>
-                        <option value="mx">México</option>
-                        <option value="ar">Argentina</option>
-                        <option value="co">Colombia</option>
-                        <option value="pe">Perú</option>
-                        <option value="cl">Chile</option>
-                        <option value="es">España</option>
-                        <option value="br">Brasil</option>
-                        <option value="other">Otro país</option>
-                    </select>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="multiple-citizenship">
-                            Tengo más de una nacionalidad
-                        </label>
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="visually-hidden">Características de Nuestro Servicio</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon" aria-hidden="true">✈️</div>
+                        <div>
+                            <h3>Visas para EE.UU.</h3>
+                            <p>Turismo, viajes, negocios, estudio y tránsito</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Selecciona la(s) razón(es) para viajar a Estados Unidos:</label>
-                    <div class="travel-reasons">
-                        <div class="travel-reason" data-value="tourism">
-                            <input type="checkbox" id="tourism">
-                            <div class="reason-icon">🏖️</div>
-                            <div class="reason-label">Turismo o Visita</div>
-                        </div>
-                        <div class="travel-reason" data-value="business">
-                            <input type="checkbox" id="business">
-                            <div class="reason-icon">💼</div>
-                            <div class="reason-label">Negocios</div>
-                        </div>
-                        <div class="travel-reason" data-value="transit">
-                            <input type="checkbox" id="transit">
-                            <div class="reason-icon">✈️</div>
-                            <div class="reason-label">Tránsito</div>
-                        </div>
-                        <div class="travel-reason" data-value="study">
-                            <input type="checkbox" id="study">
-                            <div class="reason-icon">🎓</div>
-                            <div class="reason-label">Estudio</div>
+                    <div class="feature-item">
+                        <div class="feature-icon" aria-hidden="true">⏰</div>
+                        <div>
+                            <h3>Aplicación Rápida 24/7</h3>
+                            <p>Formulario simplificado disponible en cualquier momento</p>
                         </div>
                     </div>
                 </div>
-                
-                <button class="form-btn">Continuar</button>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <h2 class="visually-hidden">Estadísticas de Nuestro Servicio</h2>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">200k+</div>
-                    <div class="stat-label">Clientes Satisfechos</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">Años de Experiencia</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">99%</div>
-                    <div class="stat-label">Entrega a Tiempo</div>
+        <!-- Get Started Section -->
+        <section class="get-started">
+            <div class="container">
+                <h2>Comienza Ahora</h2>
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="citizenship">¿Cuál es tu nacionalidad?</label>
+                        <select class="form-select" id="citizenship" aria-describedby="citizenship-help">
+                            <option value="" selected disabled>Selecciona tu país</option>
+                            <option value="mx">México</option>
+                            <option value="ar">Argentina</option>
+                            <option value="co">Colombia</option>
+                            <option value="pe">Perú</option>
+                            <option value="cl">Chile</option>
+                            <option value="es">España</option>
+                            <option value="br">Brasil</option>
+                            <option value="other">Otro país</option>
+                        </select>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="multiple-citizenship">
+                                Tengo más de una nacionalidad
+                            </label>
+                        </div>
+                        <div id="citizenship-help" class="visually-hidden">
+                            Selecciona tu nacionalidad principal del listado
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="travel-reasons-group">Selecciona la(s) razón(es) para viajar a Estados Unidos:</label>
+                        <div class="travel-reasons" id="travel-reasons-group" role="group" aria-labelledby="travel-reasons-label">
+                            <div class="travel-reason" data-value="tourism" tabindex="0" role="checkbox" aria-checked="false">
+                                <input type="checkbox" id="tourism" name="travel-reason">
+                                <div class="reason-icon" aria-hidden="true">🏖️</div>
+                                <div class="reason-label">Turismo o Visita</div>
+                            </div>
+                            <div class="travel-reason" data-value="business" tabindex="0" role="checkbox" aria-checked="false">
+                                <input type="checkbox" id="business" name="travel-reason">
+                                <div class="reason-icon" aria-hidden="true">💼</div>
+                                <div class="reason-label">Negocios</div>
+                            </div>
+                            <div class="travel-reason" data-value="transit" tabindex="0" role="checkbox" aria-checked="false">
+                                <input type="checkbox" id="transit" name="travel-reason">
+                                <div class="reason-icon" aria-hidden="true">✈️</div>
+                                <div class="reason-label">Tránsito</div>
+                            </div>
+                            <div class="travel-reason" data-value="study" tabindex="0" role="checkbox" aria-checked="false">
+                                <input type="checkbox" id="study" name="travel-reason">
+                                <div class="reason-icon" aria-hidden="true">🎓</div>
+                                <div class="reason-label">Estudio</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="form-btn" id="continue-btn">Continuar</button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <h2>Lo Que Dicen Nuestros Clientes</h2>
-            <p class="testimonial-text">"El proceso para obtener mi visa fue increíblemente fácil con GoGainzer. Me guiaron en cada paso y respondieron todas mis preguntas rápidamente. ¡Altamente recomendado!"</p>
-            <p>- María José, Visa de Turista EE.UU.</p>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services">
-        <div class="container">
-            <h2>Nuestros Servicios</h2>
-            <div class="services-grid">
-                <!-- ESTA Service -->
-                <div class="service-card">
-                    <div class="service-title">U.S. ESTA</div>
-                    <div class="service-price">$98</div>
-                    <div class="service-note">*Las tarifas gubernamentales <strong>ESTÁN</strong> incluidas</div>
-                    <button class="service-btn outline">¡Comenzar ahora!</button>
-                    <div class="service-features">
-                        <p>Obtén asistencia durante todo tu proceso ESTA:</p>
-                        <ul>
-                            <li>Tu consultor personal de visa</li>
-                            <li>Soporte ilimitado 24/7, en cualquier lugar</li>
-                            <li>Herramientas digitales fáciles de usar que garantizan alta tasa de aprobación</li>
-                            <li>Décadas de experiencia</li>
-                            <li>Reprocesamiento de cortesía por única vez</li>
-                        </ul>
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <h2 class="visually-hidden">Estadísticas de Nuestro Servicio</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">200k+</div>
+                        <div class="stat-label">Clientes Satisfechos</div>
                     </div>
-                </div>
-                
-                <!-- Visa Service (Featured) -->
-                <div class="service-card featured">
-                    <div class="featured-badge">Mejor Valor</div>
-                    <div class="service-title">Servicio de Visa para EE.UU.</div>
-                    <div class="service-price">$175</div>
-                    <div class="service-note">*Las tarifas gubernamentales <strong>NO</strong> están incluidas</div>
-                    <button class="service-btn">¡Comenzar ahora!</button>
-                    <div class="service-features">
-                        <p>Características incluidas en el paquete:</p>
-                        <ul>
-                            <li>Todos los beneficios de un consultor personal de visa</li>
-                            <li>Soporte ilimitado 24/7, en cualquier parte del mundo</li>
-                            <li>Herramientas digitales fáciles de usar</li>
-                            <li>Décadas de experiencia</li>
-                            <li>Revisión de aplicación, carta de invitación, guía de entrevista</li>
-                            <li>Mucho más…</li>
-                        </ul>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Años de Experiencia</div>
                     </div>
-                </div>
-                
-                <!-- VIP Service -->
-                <div class="service-card">
-                    <div class="service-title">Visa VIP para EE.UU.</div>
-                    <div class="service-price">$495</div>
-                    <div class="service-note">*Las tarifas gubernamentales <strong>NO</strong> están incluidas</div>
-                    <button class="service-btn outline">¡Comenzar ahora!</button>
-                    <div class="service-features">
-                        <p>Ideal para rechazos previos, revocaciones, estadías excedidas, antecedentes penales, DUI, entrevistas que te ponen nervioso:</p>
-                        <ul>
-                            <li>Incluye TODAS las características del Servicio de Visa para EE.UU.</li>
-                            <li>Consulta privada de 30 minutos con un ex-oficial de visa real</li>
-                            <li>Tu asesor personal de visa que conoce tu historial, se anticipa a obstáculos potenciales y evita retrasos innecesarios</li>
-                        </ul>
-                        <p class="disclaimer">* La compra de este servicio no garantiza la aprobación de tu visa, solo que intentaremos encontrar la mejor solución para tu caso.</p>
+                    <div class="stat-item">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Entrega a Tiempo</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="container">
+                <h2>Lo Que Dicen Nuestros Clientes</h2>
+                <blockquote>
+                    <p class="testimonial-text">"El proceso para obtener mi visa fue increíblemente fácil con GoGainzer. Me guiaron en cada paso y respondieron todas mis preguntas rápidamente. ¡Altamente recomendado!"</p>
+                    <footer>- María José, Visa de Turista EE.UU.</footer>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <div class="container">
+                <h2>Nuestros Servicios</h2>
+                <div class="services-grid">
+                    <!-- ESTA Service -->
+                    <div class="service-card">
+                        <div class="service-title">U.S. ESTA</div>
+                        <div class="service-price">$98</div>
+                        <div class="service-note">*Las tarifas gubernamentales <strong>ESTÁN</strong> incluidas</div>
+                        <button class="service-btn outline" data-service="esta">¡Comenzar ahora!</button>
+                        <div class="service-features">
+                            <p>Obtén asistencia durante todo tu proceso ESTA:</p>
+                            <ul>
+                                <li>Tu consultor personal de visa</li>
+                                <li>Soporte ilimitado 24/7, en cualquier lugar</li>
+                                <li>Herramientas digitales fáciles de usar que garantizan alta tasa de aprobación</li>
+                                <li>Décadas de experiencia</li>
+                                <li>Reprocesamiento de cortesía por única vez</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Visa Service (Featured) -->
+                    <div class="service-card featured">
+                        <div class="featured-badge">Mejor Valor</div>
+                        <div class="service-title">Servicio de Visa para EE.UU.</div>
+                        <div class="service-price">$175</div>
+                        <div class="service-note">*Las tarifas gubernamentales <strong>NO</strong> están incluidas</div>
+                        <button class="service-btn" data-service="visa">¡Comenzar ahora!</button>
+                        <div class="service-features">
+                            <p>Características incluidas en el paquete:</p>
+                            <ul>
+                                <li>Todos los beneficios de un consultor personal de visa</li>
+                                <li>Soporte ilimitado 24/7, en cualquier parte del mundo</li>
+                                <li>Herramientas digitales fáciles de usar</li>
+                                <li>Décadas de experiencia</li>
+                                <li>Revisión de aplicación, carta de invitación, guía de entrevista</li>
+                                <li>Mucho más…</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- VIP Service -->
+                    <div class="service-card">
+                        <div class="service-title">Visa VIP para EE.UU.</div>
+                        <div class="service-price">$495</div>
+                        <div class="service-note">*Las tarifas gubernamentales <strong>NO</strong> están incluidas</div>
+                        <button class="service-btn outline" data-service="vip">¡Comenzar ahora!</button>
+                        <div class="service-features">
+                            <p>Ideal para rechazos previos, revocaciones, estadías excedidas, antecedentes penales, DUI, entrevistas que te ponen nervioso:</p>
+                            <ul>
+                                <li>Incluye TODAS las características del Servicio de Visa para EE.UU.</li>
+                                <li>Consulta privada de 30 minutos con un ex-oficial de visa real</li>
+                                <li>Tu asesor personal de visa que conoce tu historial, se anticipa a obstáculos potenciales y evita retrasos innecesarios</li>
+                            </ul>
+                            <p class="disclaimer">* La compra de este servicio no garantiza la aprobación de tu visa, solo que intentaremos encontrar la mejor solución para tu caso.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div>
@@ -215,17 +225,21 @@
                     </p>
                 </div>
             </div>
-            <div class="footer-links">
-                <a href="#">Términos de Uso</a>
-                <a href="#">Términos de Servicio</a>
-                <a href="#">Política de Privacidad</a>
-                <a href="#">Aviso Legal</a>
-                <a href="#">Política de Reembolso</a>
-            </div>
+            <nav aria-label="Enlaces legales">
+                <div class="footer-links">
+                    <a href="#">Términos de Uso</a>
+                    <a href="#">Términos de Servicio</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Aviso Legal</a>
+                    <a href="#">Política de Reembolso</a>
+                </div>
+            </nav>
             <div class="footer-bottom">
                 <p>Proyecto Escolar - GoGainzer &copy; 2025. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
+
+    <script src="us-visa.js"></script>
 </body>
 </html>
