@@ -20,8 +20,10 @@ document.querySelectorAll('.travel-reason').forEach(reason => {
 
 // Funcionalidad para el formulario principal
 document.querySelector('.form-btn').addEventListener('click', () => {
-    const citizenship = document.getElementById('citizenship').value;
-    if (!citizenship) {
+    const citizenship = document.getElementById('citizenship');
+    const selectedOption = citizenship.options[citizenship.selectedIndex];
+    
+    if (!selectedOption.value) {
         alert('Por favor selecciona tu nacionalidad.');
         return;
     }
@@ -41,8 +43,36 @@ document.querySelector('.form-btn').addEventListener('click', () => {
     const multipleCitizenship = document.getElementById('multiple-citizenship').checked;
     
     alert(`¡Perfecto! 
-Nacionalidad: ${document.getElementById('citizenship').options[document.getElementById('citizenship').selectedIndex].text}
+Nacionalidad: ${selectedOption.text}
 ${multipleCitizenship ? 'Tienes múltiples nacionalidades' : ''}
 Razones de viaje: ${selectedReasons}
 Esta es una demostración para un proyecto escolar.`);
+});
+
+// Mejora de accesibilidad: focus visible para elementos interactivos
+document.addEventListener('DOMContentLoaded', function() {
+    // Agregar soporte para focus visible
+    const style = document.createElement('style');
+    style.textContent = `
+        .form-btn:focus,
+        .service-btn:focus,
+        .btn:focus,
+        .travel-reason:focus {
+            outline: 3px solid #0067FF;
+            outline-offset: 2px;
+        }
+    `;
+    document.head.appendChild(style);
+});
+
+// Mejora de SEO: agregar meta description dinámica si es necesario
+document.addEventListener('DOMContentLoaded', function() {
+    // Verificar que la meta description esté presente
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.name = 'description';
+        metaDescription.content = 'Servicios expertos de visa para Estados Unidos. Asistencia para visas de turismo, negocios, estudio y tránsito con alta tasa de aprobación.';
+        document.head.appendChild(metaDescription);
+    }
 });

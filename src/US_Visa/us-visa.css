@@ -354,7 +354,7 @@ header {
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #f59e0b;
+    background-color: #d97706; /* Color mejorado para contraste */
     color: white;
     padding: 5px 15px;
     border-radius: 20px;
@@ -387,7 +387,7 @@ header {
 }
 
 .service-btn {
-    background-color: #00b87c;
+    background-color: #059669; /* Color mejorado para contraste */
     color: white;
     border: none;
     padding: 15px 30px;
@@ -401,7 +401,7 @@ header {
 }
 
 .service-btn:hover {
-    background-color: #009e68;
+    background-color: #047857; /* Color mejorado para contraste */
 }
 
 .service-btn.outline {
@@ -497,6 +497,33 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.1);
     color: #ccc;
     font-size: 14px;
+}
+
+/* ===== Mejoras de Accesibilidad ===== */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Mejorar contraste en elementos interactivos */
+.form-btn:focus,
+.service-btn:focus,
+.btn:focus {
+    outline: 3px solid #0067FF;
+    outline-offset: 2px;
+}
+
+/* Mejorar legibilidad */
+.service-features,
+.footer-disclaimer {
+    line-height: 1.6;
 }
 
 /* ===== Responsive ===== */
