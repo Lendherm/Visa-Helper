@@ -667,3 +667,29 @@
 .side-menu.open ~ * .notification {
     z-index: 1101;
 }
+
+/* Botón de traducción - estados */
+.translate-btn.translating {
+    background: #0a3d62;
+    border: 2px solid #78e08f;
+}
+
+.translate-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Indicador de carga para traducción */
+.translating-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

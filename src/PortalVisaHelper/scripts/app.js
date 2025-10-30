@@ -11,7 +11,7 @@ class VisaHelperApp {
             appointments: 1,
             overall: 25
         };
-        
+
         this.init();
     }
 
@@ -39,6 +39,15 @@ class VisaHelperApp {
             this.navigateToSection('forms');
         });
 
+        // 🔥 NUEVO: Botón de traducción de página
+        const translateBtn = document.getElementById('translate-page-btn');
+        if (translateBtn) {
+            translateBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                await PageTranslator.togglePageTranslation();
+            });
+        }
+
         // Cerrar menú al hacer clic en overlay
         document.getElementById('overlay').addEventListener('click', () => {
             this.closeMenu();
@@ -64,16 +73,16 @@ class VisaHelperApp {
         document.querySelectorAll('.content-section').forEach(sec => {
             sec.classList.remove('active');
         });
-        
+
         // Mostrar sección seleccionada
         const targetSection = document.getElementById(section);
         if (targetSection) {
             targetSection.classList.add('active');
             this.currentSection = section;
-            
+
             // Actualizar URL
             window.location.hash = section;
-            
+
             // Actualizar enlace activo en el menú
             this.updateActiveMenuLink(section);
         }
@@ -88,7 +97,7 @@ class VisaHelperApp {
         document.querySelectorAll('.side-menu a').forEach(link => {
             link.classList.remove('active');
         });
-        
+
         const activeLink = document.querySelector(`.side-menu a[data-section="${section}"]`);
         if (activeLink) {
             activeLink.classList.add('active');
@@ -106,7 +115,7 @@ class VisaHelperApp {
         if (savedProgress) {
             this.userProgress = JSON.parse(savedProgress);
         }
-        
+
         this.updateProgressUI();
     }
 
@@ -169,7 +178,7 @@ class VisaHelperApp {
 
     renderAppointments(appointments) {
         const container = document.getElementById('appointments-list');
-        
+
         if (appointments.length === 0) {
             container.innerHTML = '<div class="deadline-item">No hay citas programadas</div>';
             return;
@@ -198,12 +207,12 @@ class VisaHelperApp {
 }
 
 // ===== INICIALIZACIÓN DE LA APLICACIÓN =====
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Configurar menú lateral
     const menuToggle = document.getElementById('menu-toggle');
     const sideMenu = document.getElementById('side-menu');
     const overlay = document.getElementById('overlay');
-    
+
     menuToggle.addEventListener('click', () => {
         sideMenu.classList.toggle('open');
         overlay.classList.toggle('active');
@@ -224,15 +233,15 @@ document.addEventListener('DOMContentLoaded', function() {
 // ===== INTEGRACIÓN CON EL SERVICIO DE CALENDARIO =====
 // Sobrescribir la función del servicio de calendario para integrar con la app
 const originalAddEvent = CalendarService.addEvent;
-CalendarService.addEvent = async function(eventDetails) {
+CalendarService.addEvent = async function (eventDetails) {
     const result = await originalAddEvent.call(this, eventDetails);
     if (result && window.visaHelperApp) {
         window.visaHelperApp.saveAppointment(eventDetails);
-        
+
         // Actualizar progreso
         window.visaHelperApp.userProgress.appointments++;
         window.visaHelperApp.userProgress.overall = Math.min(
-            window.visaHelperApp.userProgress.overall + 5, 
+            window.visaHelperApp.userProgress.overall + 5,
             100
         );
         window.visaHelperApp.updateProgressUI();

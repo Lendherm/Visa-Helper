@@ -1,3 +1,5 @@
+import { TranslationService } from "./api-service.js";
+
 // ===== GESTIÓN DE FORMULARIOS - VERSIÓN COMPLETA CON DIAGNÓSTICO =====
 
 class FormManager {
@@ -1453,3 +1455,179 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }, 100);
 });
+
+// ===== TRADUCTOR DE PÁGINA COMPLETA =====
+class PageTranslator {
+    static currentLanguage = 'es';
+    static isTranslating = false;
+
+    static async togglePageTranslation() {
+        if (this.isTranslating) {
+            this.showNotification('⚠️ Ya hay una traducción en proceso', 'warning');
+            return;
+        }
+
+        try {
+            this.isTranslating = true;
+            
+            if (this.currentLanguage === 'es') {
+                await this.translatePageToEnglish();
+            } else {
+                this.restoreOriginalPage();
+            }
+            
+        } catch (error) {
+            console.error('Error en traducción de página:', error);
+            this.showNotification('❌ Error al traducir la página', 'error');
+        } finally {
+            this.isTranslating = false;
+        }
+    }
+
+    static async translatePageToEnglish() {
+        this.showNotification('🌐 Traduciendo página al inglés...', 'info');
+
+        // Elementos a traducir
+        const elementsToTranslate = this.getTranslatableElements();
+        
+        let translatedCount = 0;
+        const totalElements = elementsToTranslate.length;
+
+        for (const element of elementsToTranslate) {
+            try {
+                const originalText = element.textContent.trim();
+                
+                if (originalText && this.shouldTranslateText(originalText)) {
+                    const translatedText = await TranslationService.translateText(originalText, 'en');
+                    
+                    if (translatedText && translatedText !== originalText) {
+                        // Guardar texto original como data attribute
+                        element.setAttribute('data-original-text', originalText);
+                        element.textContent = translatedText;
+                        translatedCount++;
+                    }
+                }
+            } catch (error) {
+                console.warn('Error traduciendo elemento:', error);
+            }
+        }
+
+        // Actualizar botón
+        this.updateTranslateButton('en');
+        this.currentLanguage = 'en';
+        
+        this.showNotification(
+            `✅ Página traducida al inglés (${translatedCount}/${totalElements} elementos)`, 
+            'success'
+        );
+    }
+
+    static restoreOriginalPage() {
+        // Restaurar textos originales
+        const translatedElements = document.querySelectorAll('[data-original-text]');
+        
+        translatedElements.forEach(element => {
+            const originalText = element.getAttribute('data-original-text');
+            if (originalText) {
+                element.textContent = originalText;
+                element.removeAttribute('data-original-text');
+            }
+        });
+
+        // Actualizar botón
+        this.updateTranslateButton('es');
+        this.currentLanguage = 'es';
+        
+        this.showNotification('🔙 Página restaurada al español', 'info');
+    }
+
+    static getTranslatableElements() {
+        // Seleccionar elementos que contienen texto para traducir
+        const selectors = [
+            'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+            'p', 'span', 'div:not(.no-translate)', 
+            'li', 'td', 'th', 'label',
+            '.welcome-banner p',
+            '.dashboard-card p',
+            '.form-step h3',
+            '.sidebar-content h3', 
+            '.sidebar-content h4',
+            '.sidebar-content p',
+            '.contact-info p',
+            '.anniversary-title',
+            '.anniversary-text',
+            '.anniversary-year',
+            '.menu-icon-text',
+            '.deadline-item',
+            '.api-item strong'
+        ];
+
+        const elements = [];
+        selectors.forEach(selector => {
+            document.querySelectorAll(selector).forEach(el => {
+                // Excluir elementos vacíos, inputs, botones, etc.
+                if (el.textContent.trim() && 
+                    !el.closest('input, button, textarea, select, code, .no-translate') &&
+                    !el.querySelector('input, button, textarea, select')) {
+                    elements.push(el);
+                }
+            });
+        });
+
+        return elements;
+    }
+
+    static shouldTranslateText(text) {
+        // Excluir textos que no deben traducirse
+        const excludePatterns = [
+            /^[0-9\s\.\%\$\€]+$/, // Solo números y símbolos
+            /^[A-Z0-9\-\_]+$/, // Códigos, IDs
+            /^.*@.*\..*$/, // Emails
+            /^https?:\/\/.*/, // URLs
+            /GoGainzer/, // Marca
+            /Visa Helper/, // Nombre de la app
+            /DS-160/, // Formulario
+            /B1\/B2/, // Tipo de visa
+            /USD/, // Moneda
+        ];
+
+        return !excludePatterns.some(pattern => pattern.test(text));
+    }
+
+    static updateTranslateButton(targetLanguage) {
+        const button = document.getElementById('translate-page-btn');
+        if (!button) return;
+
+        if (targetLanguage === 'en') {
+            button.innerHTML = '<i class="bi bi-translate"></i> Volver al Español';
+            button.classList.add('translating');
+        } else {
+            button.innerHTML = '<i class="bi bi-translate"></i> Traducir Página';
+            button.classList.remove('translating');
+        }
+    }
+
+    static showNotification(message, type = 'info') {
+        // Reutilizar el sistema de notificaciones existente
+        if (window.formManager && window.formManager.showNotification) {
+            window.formManager.showNotification(message, type);
+        } else {
+            // Fallback simple
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#78e08f' : type === 'error' ? '#e55039' : '#4a69bd'};
+                color: white;
+                padding: 12px 16px;
+                border-radius: 4px;
+                z-index: 10000;
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 4000);
+        }
+    }
+}
