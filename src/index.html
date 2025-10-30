@@ -6,64 +6,14 @@
     <title>GoGainzer: Servicios de Visa e Inmigración</title>
     <meta name="description" content="Asistencia experta para visas e inmigración. Más de 500,000 casos exitosos. Servicios de visa, pasaportes y procesos de inmigración.">
     <link rel="stylesheet" href="./styles/gogainzer.css">
-    <style>
-        /* Mejoras de contraste y accesibilidad */
-        .author-avatar {
-            background-color: #2c5aa0;
-            color: #ffffff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 16px;
-        }
-        
-        .faq p, .section-title p {
-            color: #333333;
-        }
-        
-        /* Mejoras de estructura semántica */
-        h1, h2, h3, h4 {
-            margin: 0 0 1rem 0;
-        }
-        
-        h2 {
-            font-size: 2rem;
-        }
-        
-        h3 {
-            font-size: 1.5rem;
-        }
-        
-        h4 {
-            font-size: 1.25rem;
-        }
-        
-        /* Mejoras de navegación por teclado */
-        a:focus, button:focus {
-            outline: 2px solid #2c5aa0;
-            outline-offset: 2px;
-        }
-        
-        /* Mejoras de legibilidad */
-        body {
-            line-height: 1.6;
-        }
-        
-        p {
-            margin-bottom: 1rem;
-        }
-    </style>
+
 </head>
 <body>
-    <!-- Punto de referencia para navegación -->
+    <!-- Enlace para saltar al contenido (accesibilidad) -->
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     
-    <!-- Header -->
-    <header role="banner">
+    <!-- Header - Eliminado role="banner" redundante -->
+    <header>
         <div class="container header-content">
             <!-- Logo -->
             <a href="/" class="logo">Go<span>Gainzer</span></a>
@@ -75,8 +25,8 @@
                 <span></span>
             </button>
 
-            <!-- Menú de navegación -->
-            <nav id="nav-menu" role="navigation" aria-label="Navegación principal">
+            <!-- Menú de navegación - Eliminado role="navigation" redundante -->
+            <nav id="nav-menu" aria-label="Navegación principal">
                 <ul>
                     <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#testimonios">Testimonios</a></li>
@@ -89,8 +39,8 @@
         </div>
     </header>
 
-    <!-- Contenido principal -->
-    <main id="main-content" role="main">
+    <!-- Contenido principal - Eliminado role="main" redundante -->
+    <main id="main-content">
         <!-- Hero Section -->
         <section class="hero" aria-labelledby="hero-heading">
             <div class="container">
@@ -150,7 +100,11 @@
                             <div class="author-info">
                                 <h3>María José</h3>
                                 <p>Visa de Turista EE.UU.</p>
-                                <div class="rating" aria-label="Calificación: 5 estrellas">★★★★★</div>
+                                <!-- Corregido: Reemplazado aria-label por atributo data y CSS -->
+                                <div class="rating" data-stars="5">
+                                    <span class="visually-hidden">Calificación: 5 estrellas</span>
+                                    ★★★★★
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -163,7 +117,10 @@
                             <div class="author-info">
                                 <h3>Carlos Rodríguez</h3>
                                 <p>Renovación de Pasaporte</p>
-                                <div class="rating" aria-label="Calificación: 5 estrellas">★★★★★</div>
+                                <div class="rating" data-stars="5">
+                                    <span class="visually-hidden">Calificación: 5 estrellas</span>
+                                    ★★★★★
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -176,7 +133,10 @@
                             <div class="author-info">
                                 <h3>Ana García</h3>
                                 <p>Visa de Estudiante</p>
-                                <div class="rating" aria-label="Calificación: 4 estrellas">★★★★☆</div>
+                                <div class="rating" data-stars="4">
+                                    <span class="visually-hidden">Calificación: 4 estrellas</span>
+                                    ★★★★☆
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -189,7 +149,10 @@
                             <div class="author-info">
                                 <h3>Roberto López</h3>
                                 <p>Proceso de Residencia</p>
-                                <div class="rating" aria-label="Calificación: 5 estrellas">★★★★★</div>
+                                <div class="rating" data-stars="5">
+                                    <span class="visually-hidden">Calificación: 5 estrellas</span>
+                                    ★★★★★
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -308,8 +271,8 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer id="contacto" role="contentinfo">
+    <!-- Footer - Eliminado role="contentinfo" redundante -->
+    <footer id="contacto">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
@@ -348,72 +311,77 @@
         </div>
     </footer>
 
+
     <script>
-        // Funcionalidad para las preguntas frecuentes (accesible)
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const isExpanded = question.getAttribute('aria-expanded') === 'true';
-                const answerId = question.getAttribute('aria-controls');
-                const answer = document.getElementById(answerId);
-                
-                // Cambiar estado
-                question.setAttribute('aria-expanded', !isExpanded);
-                answer.hidden = isExpanded;
-                
-                // Cambiar el símbolo
-                const symbol = question.querySelector('span');
-                symbol.textContent = !isExpanded ? '-' : '+';
-            });
+    // Funcionalidad para las preguntas frecuentes (accesible)
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const isExpanded = question.getAttribute('aria-expanded') === 'true';
+            const answerId = question.getAttribute('aria-controls');
+            const answer = document.getElementById(answerId);
+            
+            // Cambiar estado
+            question.setAttribute('aria-expanded', !isExpanded);
+            answer.hidden = isExpanded;
+            
+            // Cambiar el símbolo
+            const symbol = question.querySelector('span');
+            symbol.textContent = !isExpanded ? '-' : '+';
         });
+    });
 
-        // Funcionalidad para los botones
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', (event) => {
-                if (button.textContent.trim() === 'Comenzar Ahora' && button.closest('.hero')) {
-                    window.location.href = './US_Visa/US_Visa.html';
-                    return;
-                }
+    // Funcionalidad para los botones
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            if (button.textContent.trim() === 'Comenzar Ahora' && button.closest('.hero')) {
+                window.location.href = './US_Visa/US_Visa.html';
+                return;
+            }
 
-                if (button.textContent.trim() === 'Ingresar') {
-                    window.location.href = './PortalVisaHelper/index.html';
-                    return;
-                }
+            if (button.textContent.trim() === 'Ingresar') {
+                window.location.href = './PortalVisaHelper/index.html';
+                return;
+            }
 
-                alert('¡Gracias por tu interés! Esta es una demostración para un proyecto escolar.');
-                event.preventDefault();
-            });
+            alert('¡Gracias por tu interés! Esta es una demostración para un proyecto escolar.');
+            event.preventDefault();
         });
+    });
 
-        // Smooth scroll para los enlaces de navegación
-        const navMenu = document.getElementById('nav-menu');
-        const hamburger = document.getElementById('hamburger');
+    // Smooth scroll para los enlaces de navegación
+    const navMenu = document.getElementById('nav-menu');
+    const hamburger = document.getElementById('hamburger');
 
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
 
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    hamburger.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded', 'false');
-                }
-            });
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
         });
+    });
 
-        // Toggle menú hamburguesa
+    // Toggle menú hamburguesa
+    if (hamburger) {
         hamburger.addEventListener('click', () => {
             const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
             navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
             hamburger.setAttribute('aria-expanded', !isExpanded);
         });
+    }
 
-        // Enlace para saltar al contenido (accesibilidad)
-        document.querySelector('.skip-link').addEventListener('click', function(e) {
+    // Enlace para saltar al contenido (accesibilidad)
+    const skipLink = document.querySelector('.skip-link');
+    if (skipLink) {
+        skipLink.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -422,6 +390,7 @@
                 setTimeout(() => target.removeAttribute('tabindex'), 1000);
             }
         });
-    </script>
+    }
+</script>
 </body>
 </html>
