@@ -708,8 +708,8 @@ footer {
     }
 }
 
-/* Soporte para modo de alto contraste */
-@media (prefers-contrast: more) {
+/* CORRECCIÓN: Soporte para modo de alto contraste - Cambiar 'more' por 'high' */
+@media (prefers-contrast: high) {
     .service-card {
         border: 3px solid #000;
         background-color: #fff;
