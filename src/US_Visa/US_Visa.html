@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoGainzer - Servicios de Visa para EE.UU.</title>
-    <meta name="description" content="Servicios expertos de visa para Estados Unidos. Asistencia para visas de turismo, negocios, estudio y tránsito con alta tasa de aprobación.">
+    <meta name="description"
+        content="Servicios expertos de visa para Estados Unidos. Asistencia para visas de turismo, negocios, estudio y tránsito con alta tasa de aprobación.">
     <link rel="stylesheet" href="us-visa.css">
+    <script type="module" src="./main.js"></script>
+
+    
 </head>
+
 <body>
     <!-- Skip link para accesibilidad -->
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-    
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -59,68 +65,74 @@
             <div class="container">
                 <h2>Comienza Ahora</h2>
                 <div class="form-container">
-                    <div class="form-group">
-                        <label for="citizenship">¿Cuál es tu nacionalidad?</label>
-                        <select class="form-select" id="citizenship" aria-describedby="citizenship-help">
-                            <option value="" selected disabled>Selecciona tu país</option>
-                            <option value="mx">México</option>
-                            <option value="ar">Argentina</option>
-                            <option value="co">Colombia</option>
-                            <option value="pe">Perú</option>
-                            <option value="cl">Chile</option>
-                            <option value="es">España</option>
-                            <option value="br">Brasil</option>
-                            <option value="other">Otro país</option>
-                        </select>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="multiple-citizenship">
-                                Tengo más de una nacionalidad
-                            </label>
-                        </div>
-                        <div id="citizenship-help" class="visually-hidden">
-                            Selecciona tu nacionalidad principal del listado
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <span id="travel-reasons-label" class="form-label">
-                            Selecciona la(s) razón(es) para viajar a Estados Unidos:
-                        </span>
-                        <div class="travel-reasons" id="travel-reasons-group" role="group" 
-                             aria-labelledby="travel-reasons-label">
-                            <div class="travel-reason" data-value="tourism" tabindex="0" role="checkbox" 
-                                 aria-checked="false" aria-labelledby="tourism-label">
-                                <input type="checkbox" id="tourism" name="travel-reason">
-                                <div class="reason-icon" aria-hidden="true">🏖️</div>
-                                <span id="tourism-label" class="reason-label">Turismo o Visita</span>
+                    <form id="visa-main-form" action="form-action.html" method="get">
+                        <div class="form-group">
+                            <label for="citizenship">¿Cuál es tu nacionalidad?</label>
+                            <select class="form-select" id="citizenship" name="citizenship"
+                                aria-describedby="citizenship-help">
+                                <option value="" selected disabled>Selecciona tu país</option>
+                                <option value="mx">México</option>
+                                <option value="ar">Argentina</option>
+                                <option value="co">Colombia</option>
+                                <option value="pe">Perú</option>
+                                <option value="cl">Chile</option>
+                                <option value="es">España</option>
+                                <option value="br">Brasil</option>
+                                <option value="other">Otro país</option>
+                            </select>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="multiple-citizenship" name="multipleCitizenship"
+                                        value="true">
+                                    Tengo más de una nacionalidad
+                                </label>
                             </div>
-                            <div class="travel-reason" data-value="business" tabindex="0" role="checkbox" 
-                                 aria-checked="false" aria-labelledby="business-label">
-                                <input type="checkbox" id="business" name="travel-reason">
-                                <div class="reason-icon" aria-hidden="true">💼</div>
-                                <span id="business-label" class="reason-label">Negocios</span>
-                            </div>
-                            <div class="travel-reason" data-value="transit" tabindex="0" role="checkbox" 
-                                 aria-checked="false" aria-labelledby="transit-label">
-                                <input type="checkbox" id="transit" name="travel-reason">
-                                <div class="reason-icon" aria-hidden="true">✈️</div>
-                                <span id="transit-label" class="reason-label">Tránsito</span>
-                            </div>
-                            <div class="travel-reason" data-value="study" tabindex="0" role="checkbox" 
-                                 aria-checked="false" aria-labelledby="study-label">
-                                <input type="checkbox" id="study" name="travel-reason">
-                                <div class="reason-icon" aria-hidden="true">🎓</div>
-                                <span id="study-label" class="reason-label">Estudio</span>
+                            <div id="citizenship-help" class="visually-hidden">
+                                Selecciona tu nacionalidad principal del listado
                             </div>
                         </div>
-                    </div>
-                    
-                    <button class="form-btn" id="continue-btn">Continuar</button>
+
+                        <div class="form-group">
+                            <span id="travel-reasons-label" class="form-label">
+                                Selecciona la(s) razón(es) para viajar a Estados Unidos:
+                            </span>
+                            <div class="travel-reasons" id="travel-reasons-group" role="group"
+                                aria-labelledby="travel-reasons-label">
+                                <!-- Los inputs hidden para el formulario -->
+                                <input type="hidden" name="travelReasons" id="travel-reasons-data">
+
+                                <div class="travel-reason" data-value="tourism" tabindex="0" role="checkbox"
+                                    aria-checked="false" aria-labelledby="tourism-label">
+                                    <input type="checkbox" id="tourism" value="Turismo o Visita">
+                                    <div class="reason-icon" aria-hidden="true">🏖️</div>
+                                    <span id="tourism-label" class="reason-label">Turismo o Visita</span>
+                                </div>
+                                <div class="travel-reason" data-value="business" tabindex="0" role="checkbox"
+                                    aria-checked="false" aria-labelledby="business-label">
+                                    <input type="checkbox" id="business" value="Negocios">
+                                    <div class="reason-icon" aria-hidden="true">💼</div>
+                                    <span id="business-label" class="reason-label">Negocios</span>
+                                </div>
+                                <div class="travel-reason" data-value="transit" tabindex="0" role="checkbox"
+                                    aria-checked="false" aria-labelledby="transit-label">
+                                    <input type="checkbox" id="transit" value="Tránsito">
+                                    <div class="reason-icon" aria-hidden="true">✈️</div>
+                                    <span id="transit-label" class="reason-label">Tránsito</span>
+                                </div>
+                                <div class="travel-reason" data-value="study" tabindex="0" role="checkbox"
+                                    aria-checked="false" aria-labelledby="study-label">
+                                    <input type="checkbox" id="study" value="Estudio">
+                                    <div class="reason-icon" aria-hidden="true">🎓</div>
+                                    <span id="study-label" class="reason-label">Estudio</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="form-btn" id="continue-btn">Continuar</button>
+                    </form>
                 </div>
             </div>
         </section>
-
         <!-- Stats Section -->
         <section class="stats">
             <div class="container">
@@ -147,11 +159,43 @@
             <div class="container">
                 <h2>Lo Que Dicen Nuestros Clientes</h2>
                 <blockquote>
-                    <p class="testimonial-text">"El proceso para obtener mi visa fue increíblemente fácil con GoGainzer. Me guiaron en cada paso y respondieron todas mis preguntas rápidamente. ¡Altamente recomendado!"</p>
+                    <p class="testimonial-text">"El proceso para obtener mi visa fue increíblemente fácil con GoGainzer.
+                        Me guiaron en cada paso y respondieron todas mis preguntas rápidamente. ¡Altamente recomendado!"
+                    </p>
                     <footer>- María José, Visa de Turista EE.UU.</footer>
                 </blockquote>
             </div>
         </section>
+
+        <!-- Dynamic Content Section - Countries -->
+        <section class="dynamic-content" id="dynamic-content">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Países con Servicios de Visa Disponibles</h2>
+                    <p>Explora nuestros servicios para diferentes destinos alrededor del mundo</p>
+                </div>
+                <div id="countries-container" class="countries-grid">
+                    <!-- Los países se cargarán dinámicamente aquí -->
+                    <div class="loading">Cargando información de países...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal para detalles de países -->
+        <div id="country-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+            <div class="modal-overlay" tabindex="-1" data-close-modal></div>
+            <div class="modal-content" role="document">
+                <button class="modal-close" aria-label="Cerrar modal" data-close-modal>&times;</button>
+                <h2 id="modal-title">Detalles del País</h2>
+                <div id="modal-body" class="modal-body">
+                    <!-- Contenido del modal se cargará aquí -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn modal-btn" data-action="close">Cerrar</button>
+                    <button class="btn modal-btn primary" data-action="select">Seleccionar País</button>
+                </div>
+            </div>
+        </div>
 
         <!-- Services Section -->
         <section class="services">
@@ -175,7 +219,7 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <!-- Visa Service (Featured) -->
                     <div class="service-card featured">
                         <div class="featured-badge">Mejor Valor</div>
@@ -195,7 +239,7 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <!-- VIP Service -->
                     <div class="service-card">
                         <div class="service-title">Visa VIP para EE.UU.</div>
@@ -203,13 +247,16 @@
                         <div class="service-note">*Las tarifas gubernamentales <strong>NO</strong> están incluidas</div>
                         <button class="service-btn outline" data-service="vip">¡Comenzar ahora!</button>
                         <div class="service-features">
-                            <p>Ideal para rechazos previos, revocaciones, estadías excedidas, antecedentes penales, DUI, entrevistas que te ponen nervioso:</p>
+                            <p>Ideal para rechazos previos, revocaciones, estadías excedidas, antecedentes penales, DUI,
+                                entrevistas que te ponen nervioso:</p>
                             <ul>
                                 <li>Incluye TODAS las características del Servicio de Visa para EE.UU.</li>
                                 <li>Consulta privada de 30 minutos con un ex-oficial de visa real</li>
-                                <li>Tu asesor personal de visa que conoce tu historial, se anticipa a obstáculos potenciales y evita retrasos innecesarios</li>
+                                <li>Tu asesor personal de visa que conoce tu historial, se anticipa a obstáculos
+                                    potenciales y evita retrasos innecesarios</li>
                             </ul>
-                            <p class="disclaimer">* La compra de este servicio no garantiza la aprobación de tu visa, solo que intentaremos encontrar la mejor solución para tu caso.</p>
+                            <p class="disclaimer">* La compra de este servicio no garantiza la aprobación de tu visa,
+                                solo que intentaremos encontrar la mejor solución para tu caso.</p>
                         </div>
                     </div>
                 </div>
@@ -226,8 +273,9 @@
                         <div class="logo">Go<span>Gainzer</span></div>
                     </div>
                     <p class="footer-disclaimer">
-                        Aviso: GoGainzer no está afiliado a ninguna agencia o departamento del gobierno de los Estados Unidos. 
-                        Los costos de los servicios de consultoría NO incluyen tarifas gubernamentales de aplicación, 
+                        Aviso: GoGainzer no está afiliado a ninguna agencia o departamento del gobierno de los Estados
+                        Unidos.
+                        Los costos de los servicios de consultoría NO incluyen tarifas gubernamentales de aplicación,
                         examen médico, presentación o biométricas.
                     </p>
                 </div>
@@ -247,6 +295,7 @@
         </div>
     </footer>
 
-    <script src="us-visa.js"></script>
+
 </body>
+
 </html>

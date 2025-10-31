@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Formulario - GoGainzer</title>
+    <meta name="description" content="Confirmación de envío de formulario de servicios de visa para Estados Unidos">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .success-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .success-icon {
+            font-size: 80px;
+            color: #78e08f;
+            margin-bottom: 20px;
+        }
+
+        .success-header h1 {
+            color: #032247;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+
+        .success-header p {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .form-data {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .form-data h2 {
+            color: #032247;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #032247;
+            padding-bottom: 10px;
+        }
+
+        .data-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #0067FF;
+        }
+
+        .data-item strong {
+            color: #032247;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .next-steps {
+            background: #e6f0ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .next-steps h3 {
+            color: #032247;
+            margin-bottom: 15px;
+        }
+
+        .next-steps ul {
+            list-style: none;
+        }
+
+        .next-steps li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .next-steps li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #0067FF;
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #032247;
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #032247;
+            color: #032247;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .demo-notice {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            color: #856404;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .success-header h1 {
+                font-size: 2rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-header">
+            <div class="success-icon">✅</div>
+            <h1>¡Formulario Enviado Exitosamente!</h1>
+            <p>Hemos recibido tu información y estamos procesando tu solicitud</p>
+        </div>
+
+        <div class="form-data">
+            <h2>Información Recibida</h2>
+            <div id="form-data-display">
+                <!-- Los datos del formulario se mostrarán aquí -->
+            </div>
+        </div>
+
+        <div class="next-steps">
+            <h3>Próximos Pasos</h3>
+            <ul>
+                <li>Revisaremos tu información dentro de las próximas 24 horas</li>
+                <li>Recibirás un correo de confirmación con tu número de caso</li>
+                <li>Nuestro equipo se pondrá en contacto para los siguientes pasos</li>
+                <li>Prepara los documentos requeridos para tu visa</li>
+            </ul>
+        </div>
+
+        <div class="action-buttons">
+            <a href="US_Visa.html" class="btn btn-primary">Volver al Formulario</a>
+            <a href="../index.html" class="btn btn-outline">Ir al Inicio</a>
+            <a href="../PortalVisaHelper/index.html" class="btn btn-outline">Acceder al Portal</a>
+        </div>
+
+        <div class="demo-notice">
+            <strong>Nota:</strong> Esta es una demostración para un proyecto escolar. Los datos no se almacenan permanentemente.
+        </div>
+    </div>
+
+    <script>
+        // Display form data from URL parameters
+        function displayFormData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const container = document.getElementById('form-data-display');
+            
+            if (urlParams.toString() === '') {
+                // Try to get data from localStorage as fallback
+                const savedData = localStorage.getItem('visaFormData');
+                if (savedData) {
+                    displaySavedData(JSON.parse(savedData), container);
+                    return;
+                }
+                
+                container.innerHTML = '<p>No se recibieron datos del formulario.</p>';
+                return;
+            }
+
+            let html = '';
+            for (const [key, value] of urlParams) {
+                if (value) {
+                    const formattedKey = formatKey(key);
+                    const formattedValue = decodeURIComponent(value);
+                    html += `
+                        <div class="data-item">
+                            <strong>${formattedKey}</strong>
+                            <span>${formattedValue}</span>
+                        </div>
+                    `;
+                }
+            }
+            
+            container.innerHTML = html;
+        }
+
+        function displaySavedData(savedData, container) {
+            if (!savedData || !savedData.formData) {
+                container.innerHTML = '<p>No hay datos guardados para mostrar.</p>';
+                return;
+            }
+
+            const formData = savedData.formData;
+            let html = '';
+
+            if (formData.citizenshipText) {
+                html += `
+                    <div class="data-item">
+                        <strong>Nacionalidad</strong>
+                        <span>${formData.citizenshipText}</span>
+                    </div>
+                `;
+            }
+
+            if (formData.multipleCitizenship !== undefined) {
+                html += `
+                    <div class="data-item">
+                        <strong>Múltiples Nacionalidades</strong>
+                        <span>${formData.multipleCitizenship ? 'Sí' : 'No'}</span>
+                    </div>
+                `;
+            }
+
+            if (formData.travelReasons && formData.travelReasons.length > 0) {
+                html += `
+                    <div class="data-item">
+                        <strong>Razones de Viaje</strong>
+                        <span>${Array.isArray(formData.travelReasons) ? formData.travelReasons.join(', ') : formData.travelReasons}</span>
+                    </div>
+                `;
+            }
+
+            if (formData.timestamp) {
+                html += `
+                    <div class="data-item">
+                        <strong>Fecha de Envío</strong>
+                        <span>${new Date(formData.timestamp).toLocaleString('es-MX')}</span>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html || '<p>No hay datos válidos para mostrar.</p>';
+        }
+
+        function formatKey(key) {
+            const keyMap = {
+                'citizenship': 'Nacionalidad',
+                'multipleCitizenship': 'Múltiples Nacionalidades',
+                'travelReasons': 'Razones de Viaje',
+                'timestamp': 'Fecha de Envío'
+            };
+            
+            return keyMap[key] || key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+        }
+
+        // Load form data when page loads
+        document.addEventListener('DOMContentLoaded', displayFormData);
+    </script>
+</body>
+</html>
