@@ -186,6 +186,14 @@ header {
     font-size: 18px;
 }
 
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #032247;
+    font-size: 18px;
+}
+
 .form-select {
     width: 100%;
     padding: 15px;
@@ -289,7 +297,6 @@ header {
 .travel-reason input {
     position: absolute;
     opacity: 0;
-    pointer-events: none;
 }
 
 .form-btn {
@@ -702,16 +709,60 @@ footer {
 }
 
 /* Soporte para modo de alto contraste */
-@media (prefers-contrast: high) {
+@media (prefers-contrast: more) {
     .service-card {
-        border: 2px solid #000;
+        border: 3px solid #000;
+        background-color: #fff;
     }
     
     .travel-reason {
         border: 2px solid #000;
+        background-color: #fff;
     }
     
     .travel-reason.selected {
         border: 3px solid #000;
+        background-color: #ffff00;
+        color: #000;
     }
+    
+    .form-btn, .service-btn {
+        border: 2px solid #000;
+    }
+}
+
+/* Soporte para prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .service-card,
+    .travel-reason,
+    .feature-item {
+        transition: none;
+    }
+    
+    .service-card:hover,
+    .travel-reason:hover {
+        transform: none;
+    }
+}
+
+/* Mejorar visibilidad de focus para navegación por teclado */
+.travel-reason:focus,
+.service-btn:focus,
+.form-btn:focus,
+.form-select:focus {
+    outline: 3px solid #0067FF;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(0, 103, 255, 0.3);
+}
+
+/* Mejoras de accesibilidad para checkboxes */
+.travel-reason:focus-within {
+    outline: 3px solid #0067FF;
+    outline-offset: 2px;
 }

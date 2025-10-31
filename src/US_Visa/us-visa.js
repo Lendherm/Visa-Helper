@@ -46,22 +46,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Funcionalidad mejorada para las opciones de viaje
     document.querySelectorAll('.travel-reason').forEach(reason => {
         const checkbox = reason.querySelector('input');
-        const label = reason.querySelector('.reason-label').textContent;
+        const labelId = reason.getAttribute('aria-labelledby');
+        const labelText = document.getElementById(labelId)?.textContent || 'Opción de viaje';
         
         // Actualizar estado ARIA inicial
-        reason.setAttribute('aria-checked', 'false');
+        reason.setAttribute('aria-checked', checkbox.checked.toString());
         
         reason.addEventListener('click', (e) => {
             e.preventDefault();
-            toggleTravelReason(reason, checkbox, label);
+            toggleTravelReason(reason, checkbox, labelText);
         });
 
         // Soporte para teclado
         reason.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                toggleTravelReason(reason, checkbox, label);
+                toggleTravelReason(reason, checkbox, labelText);
             }
+        });
+        
+        // Sincronizar cambios directos en el checkbox
+        checkbox.addEventListener('change', function() {
+            reason.classList.toggle('selected', this.checked);
+            reason.setAttribute('aria-checked', this.checked.toString());
         });
     });
 
@@ -109,6 +116,9 @@ function toggleTravelReason(reason, checkbox, label) {
     
     const status = checkbox.checked ? 'seleccionado' : 'deseleccionado';
     announceToScreenReader(`${label} ${status}`);
+    
+    // Enfocar el checkbox para accesibilidad
+    checkbox.focus();
 }
 
 // Función para procesar el formulario principal
@@ -128,7 +138,8 @@ function processForm() {
     const selectedReasons = Array.from(document.querySelectorAll('.travel-reason input:checked'))
         .map(checkbox => {
             const reason = checkbox.closest('.travel-reason');
-            return reason.querySelector('.reason-label').textContent;
+            const labelId = reason.getAttribute('aria-labelledby');
+            return document.getElementById(labelId)?.textContent || 'Opción de viaje';
         });
     
     if (selectedReasons.length === 0) {

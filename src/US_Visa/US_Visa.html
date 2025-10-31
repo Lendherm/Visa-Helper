@@ -12,7 +12,7 @@
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     
     <!-- Header -->
-    <header role="banner">
+    <header>
         <div class="container">
             <div class="header-content">
                 <a href="/" class="logo" aria-label="GoGainzer - Inicio">Go<span>Gainzer</span></a>
@@ -22,7 +22,7 @@
     </header>
 
     <!-- Main Content -->
-    <main id="main-content" role="main">
+    <main id="main-content">
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
@@ -84,27 +84,34 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="travel-reasons-group">Selecciona la(s) razón(es) para viajar a Estados Unidos:</label>
-                        <div class="travel-reasons" id="travel-reasons-group" role="group" aria-labelledby="travel-reasons-label">
-                            <div class="travel-reason" data-value="tourism" tabindex="0" role="checkbox" aria-checked="false">
+                        <span id="travel-reasons-label" class="form-label">
+                            Selecciona la(s) razón(es) para viajar a Estados Unidos:
+                        </span>
+                        <div class="travel-reasons" id="travel-reasons-group" role="group" 
+                             aria-labelledby="travel-reasons-label">
+                            <div class="travel-reason" data-value="tourism" tabindex="0" role="checkbox" 
+                                 aria-checked="false" aria-labelledby="tourism-label">
                                 <input type="checkbox" id="tourism" name="travel-reason">
                                 <div class="reason-icon" aria-hidden="true">🏖️</div>
-                                <div class="reason-label">Turismo o Visita</div>
+                                <span id="tourism-label" class="reason-label">Turismo o Visita</span>
                             </div>
-                            <div class="travel-reason" data-value="business" tabindex="0" role="checkbox" aria-checked="false">
+                            <div class="travel-reason" data-value="business" tabindex="0" role="checkbox" 
+                                 aria-checked="false" aria-labelledby="business-label">
                                 <input type="checkbox" id="business" name="travel-reason">
                                 <div class="reason-icon" aria-hidden="true">💼</div>
-                                <div class="reason-label">Negocios</div>
+                                <span id="business-label" class="reason-label">Negocios</span>
                             </div>
-                            <div class="travel-reason" data-value="transit" tabindex="0" role="checkbox" aria-checked="false">
+                            <div class="travel-reason" data-value="transit" tabindex="0" role="checkbox" 
+                                 aria-checked="false" aria-labelledby="transit-label">
                                 <input type="checkbox" id="transit" name="travel-reason">
                                 <div class="reason-icon" aria-hidden="true">✈️</div>
-                                <div class="reason-label">Tránsito</div>
+                                <span id="transit-label" class="reason-label">Tránsito</span>
                             </div>
-                            <div class="travel-reason" data-value="study" tabindex="0" role="checkbox" aria-checked="false">
+                            <div class="travel-reason" data-value="study" tabindex="0" role="checkbox" 
+                                 aria-checked="false" aria-labelledby="study-label">
                                 <input type="checkbox" id="study" name="travel-reason">
                                 <div class="reason-icon" aria-hidden="true">🎓</div>
-                                <div class="reason-label">Estudio</div>
+                                <span id="study-label" class="reason-label">Estudio</span>
                             </div>
                         </div>
                     </div>
@@ -211,7 +218,7 @@
     </main>
 
     <!-- Footer -->
-    <footer role="contentinfo">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div>
