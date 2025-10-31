@@ -1,0 +1,54 @@
+/* ===== ICONOS LOCALES - REEMPLAZO BOOTSTRAP ICONS ===== */
+
+/* Iconos usando pseudo-elementos y Unicode */
+.bi::before {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.bi-house-door::before { content: "🏠"; }
+.bi-journey::before { content: "✈️"; }
+.bi-file-earmark-text::before { content: "📄"; }
+.bi-folder::before { content: "📁"; }
+.bi-calendar-check::before { content: "📅"; }
+.bi-graph-up::before { content: "📊"; }
+.bi-info-circle::before { content: "ℹ️"; }
+.bi-person::before { content: "👤"; }
+.bi-translate::before { content: "🌐"; }
+.bi-check-circle::before { content: "✅"; }
+.bi-exclamation-circle::before { content: "⚠️"; }
+.bi-clock::before { content: "⏰"; }
+.bi-currency-dollar::before { content: "💵"; }
+.bi-calendar-plus::before { content: "➕"; }
+.bi-globe::before { content: "🌍"; }
+.bi-passport::before { content: "📒"; }
+.bi-image::before { content: "🖼️"; }
+.bi-file-text::before { content: "📝"; }
+.bi-cash-stack::before { content: "💰"; }
+.bi-briefcase::before { content: "💼"; }
+.bi-bank::before { content: "🏦"; }
+.bi-house::before { content: "🏠"; }
+.bi-airplane::before { content: "✈️"; }
+.bi-chevron-right::before { content: "›"; }
+.bi-chevron-left::before { content: "‹"; }
+
+/* Iconos para menú lateral */
+.side-menu .bi::before {
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Iconos para tarjetas del dashboard */
+.dashboard-card .bi::before {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Iconos para botones */
+.translate-btn .bi::before,
+.calendar-btn .bi::before {
+    margin-right: 5px;
+}

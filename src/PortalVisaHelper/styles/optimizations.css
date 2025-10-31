@@ -1,0 +1,120 @@
+/* ===== OPTIMIZACIONES LIGHTHOUSE - VISA HELPER ===== */
+
+/* 1. REGLAS PROBLEMÁTICAS DE GOOGLE ELIMINADAS */
+/* Las reglas .nsm7Bb-* han sido removidas para evitar errores de validación */
+
+/* 2. MEJORAS DE ACCESIBILIDAD - CONTRASTE */
+.anniversary {
+    color: #00ff88 !important;
+    font-weight: 600;
+}
+
+.contact-info {
+    color: #e8f4f8 !important;
+}
+
+.contact-info a {
+    color: #aee8d2 !important;
+    font-weight: 500;
+}
+
+/* 3. MEJORAS SEO Y SEMÁNTICA */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* 4. ESTRUCTURA DE ENCABEZADOS CORRECTA */
+.side-menu h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.sidebar-content h3 {
+    font-size: 1.25rem;
+    color: #78e08f;
+}
+
+.sidebar-content h4 {
+    font-size: 1.1rem;
+    color: #aee8d2;
+}
+
+/* 5. MEJORAS DE RENDIMIENTO */
+.site-header {
+    will-change: transform;
+}
+
+.dashboard-card {
+    will-change: transform;
+}
+
+/* 6. MEJORAS DE FORMULARIOS - ACCESIBILIDAD */
+.form-group label {
+    font-weight: 600;
+    color: #0a3d62;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: 2px solid #0a3d62;
+    outline-offset: 2px;
+}
+
+/* 7. BOTONES CON MEJOR CONTRASTE */
+.translate-btn,
+.calendar-btn,
+.form-btn {
+    background-color: #0a3d62;
+    color: #ffffff;
+    border: 2px solid transparent;
+    font-weight: 600;
+}
+
+.translate-btn:hover,
+.calendar-btn:hover,
+.form-btn:hover:not(:disabled) {
+    background-color: #0056b3;
+    border-color: #ffffff;
+}
+
+/* 8. MEJORAS RESPONSIVE - RENDIMIENTO MÓVIL */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .form-container {
+        padding: 1rem;
+    }
+    
+    .dashboard-card {
+        transform: none !important;
+    }
+}
+
+/* 9. MEJORAR INDICADORES DE ESTADO */
+.api-status.connected {
+    background: #00a86b !important;
+    color: #ffffff !important;
+}
+
+.api-status.loading {
+    background: #ff8c00 !important;
+    color: #ffffff !important;
+}
+
+.api-status.error {
+    background: #dc3545 !important;
+    color: #ffffff !important;
+}
