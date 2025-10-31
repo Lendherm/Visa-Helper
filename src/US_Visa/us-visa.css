@@ -708,28 +708,6 @@ footer {
     }
 }
 
-/* CORRECCIÓN: Soporte para modo de alto contraste - Cambiar 'more' por 'high' */
-@media (prefers-contrast: high) {
-    .service-card {
-        border: 3px solid #000;
-        background-color: #fff;
-    }
-    
-    .travel-reason {
-        border: 2px solid #000;
-        background-color: #fff;
-    }
-    
-    .travel-reason.selected {
-        border: 3px solid #000;
-        background-color: #ffff00;
-        color: #000;
-    }
-    
-    .form-btn, .service-btn {
-        border: 2px solid #000;
-    }
-}
 
 /* Soporte para prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
@@ -1022,16 +1000,6 @@ footer {
     }
 }
 
-/* High contrast support */
-@media (prefers-contrast: high) {
-    .country-card {
-        border: 2px solid #000;
-    }
-    
-    .modal-content {
-        border: 3px solid #000;
-    }
-}
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
