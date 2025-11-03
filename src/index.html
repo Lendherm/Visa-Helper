@@ -6,17 +6,22 @@
     <title>GoGainzer: Servicios de Visa e Inmigración</title>
     <meta name="description" content="Asistencia experta para visas e inmigración. Más de 500,000 casos exitosos. Servicios de visa, pasaportes y procesos de inmigración.">
     
-    <!-- Preconexiones críticas -->
+    <!-- Preconexiones críticas optimizadas -->
     <link rel="preconnect" href="https://www.youtube.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://www.google.com">
     
-    <!-- CSS crítico inline -->
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="./styles/gogainzer.css" as="style" fetchpriority="high">
+    
+    <!-- CSS crítico inline optimizado -->
     <style>
         /* CSS crítico para renderizado inicial */
         :root {
             --primary-color: #3498db;
             --secondary-color: #2c3e50;
-            --text-color: #333;
+            --text-color: #222; /* Mejor contraste */
             --light-bg: #f8f9fa;
         }
         
@@ -65,7 +70,7 @@
             color: var(--primary-color);
         }
         
-        /* Hero section crítico */
+        /* Hero section crítico - LCP optimizado */
         .hero {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
@@ -78,9 +83,13 @@
             margin-bottom: 1rem;
         }
         
+        .hero p {
+            color: #f0f0f0; /* Mejor contraste */
+        }
+        
         .btn {
             display: inline-block;
-            background: var(--primary-color);
+            background: #0078d7; /* Mejor contraste */
             color: white;
             padding: 0.7rem 1.5rem;
             border-radius: 4px;
@@ -89,7 +98,7 @@
             transition: background 0.3s;
         }
         
-        /* Video placeholder */
+        /* Video placeholder optimizado */
         .video-placeholder {
             max-width: 1000px;
             margin: 2rem auto;
@@ -101,25 +110,31 @@
             aspect-ratio: 16/9;
         }
         
-        .video-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, #333, #000);
+        .video-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         
-        .video-placeholder::after {
-            content: '▶';
+        .play-btn {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
             color: white;
-            font-size: 4rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .play-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
         }
         
         .video-placeholder .placeholder-text {
@@ -144,7 +159,7 @@
             margin-bottom: 1rem;
         }
         
-        /* Loading states - CORREGIDO: eliminado pointer-events */
+        /* Loading states */
         .loading {
             opacity: 0.7;
         }
@@ -215,9 +230,6 @@
     
     <!-- CSS no crítico cargado de forma diferida -->
     <link rel="stylesheet" href="./styles/gogainzer.css" media="print" onload="this.media='all'">
-    
-    <!-- Preload de recursos importantes -->
-    <link rel="preload" href="./styles/gogainzer.css" as="style">
 </head>
 <body>
     <!-- Enlace para saltar al contenido (accesibilidad) -->
@@ -245,7 +257,7 @@
     </header>
 
     <main id="main-content">
-        <!-- Hero Section -->
+        <!-- Hero Section - LCP optimizado -->
         <section class="hero" aria-labelledby="hero-heading">
             <div class="container">
                 <h1 id="hero-heading">Asistencia Experta para Documentación de Viaje</h1>
@@ -262,29 +274,24 @@
                     <p>Mira este video para entender cómo podemos ayudarte con tus trámites de visa e inmigración</p>
                 </div>
                 
-                <!-- Placeholder del video que se carga bajo demanda -->
+                <!-- Placeholder del video optimizado con imagen de miniatura - CORREGIDO -->
                 <div class="video-placeholder" id="video-placeholder" 
-                     data-video-id="1U28VduUJco"
-                     role="button"
-                     tabindex="0"
-                     aria-labelledby="video-description">
+                     data-video-id="1U28VduUJco">
+                    <img src="https://img.youtube.com/vi/1U28VduUJco/hqdefault.jpg" 
+                         alt="Video de presentación de GoGainzer" 
+                         loading="lazy"
+                         width="1280" 
+                         height="720">
+                    <button class="play-btn" aria-label="Reproducir video">▶</button>
                     <div class="placeholder-text">Haz clic para reproducir el video</div>
                 </div>
                 <div id="video-description" class="visually-hidden">
                     Video de presentación de GoGainzer - Haz clic para reproducir
                 </div>
                 
-                <!-- Contenedor para el video real (cargado bajo demanda) con src válido -->
+                <!-- Contenedor para el video real (cargado bajo demanda) -->
                 <div class="video-container" id="video-container" hidden>
-                    <iframe 
-                        width="560" 
-                        height="315" 
-                        src="about:blank" 
-                        title="Video de GoGainzer - Servicios de Visa e Inmigración" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
+                    <!-- El iframe se creará dinámicamente -->
                 </div>
             </div>
         </section>
@@ -550,67 +557,65 @@
 
     <!-- Scripts optimizados -->
     <script>
-        // Carga diferida del video de YouTube
+        // Carga diferida del video de YouTube - optimizada
         document.addEventListener('DOMContentLoaded', function() {
             const videoPlaceholder = document.getElementById('video-placeholder');
             const videoContainer = document.getElementById('video-container');
-            const iframe = videoContainer.querySelector('iframe');
+            const playBtn = videoPlaceholder.querySelector('.play-btn');
             
             let videoLoaded = false;
             
-            // Cargar video al hacer clic en el placeholder
-            videoPlaceholder.addEventListener('click', loadYouTubeVideo);
-            videoPlaceholder.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    loadYouTubeVideo();
-                }
-            });
-            
-            // Cargar video cuando sea visible en el viewport
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !videoLoaded) {
-                        // Cargar después de un pequeño delay
-                        setTimeout(loadYouTubeVideo, 1000);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            observer.observe(videoPlaceholder);
-            
+            // Cargar video al hacer clic en el placeholder o botón
             function loadYouTubeVideo() {
                 if (videoLoaded) return;
                 
                 videoLoaded = true;
                 videoPlaceholder.classList.add('loading');
                 
-                // Cargar el iframe de YouTube
+                // Crear iframe dinámicamente
                 const videoId = videoPlaceholder.dataset.videoId;
+                const iframe = document.createElement('iframe');
                 iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                iframe.title = "Video de GoGainzer - Servicios de Visa e Inmigración";
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                iframe.allowFullscreen = true;
+                iframe.loading = "lazy";
+                iframe.width = "100%";
+                iframe.height = "560";
                 
-                videoPlaceholder.hidden = true;
-                videoContainer.hidden = false;
+                // Reemplazar placeholder con iframe
+                videoPlaceholder.replaceWith(iframe);
                 videoPlaceholder.classList.remove('loading');
-                
-                observer.unobserve(videoPlaceholder);
             }
             
-            // Cargar recursos no críticos después de la carga inicial
-            window.addEventListener('load', function() {
-                // Preconectar a otros orígenes si es necesario
-                const preconnectLinks = [
-                    'https://fonts.googleapis.com',
-                    'https://www.google.com'
-                ];
-                
-                preconnectLinks.forEach(url => {
-                    const link = document.createElement('link');
-                    link.rel = 'preconnect';
-                    link.href = url;
-                    document.head.appendChild(link);
-                });
+            // Event listeners para carga del video
+            videoPlaceholder.addEventListener('click', function(e) {
+                // Solo cargar si no se hizo clic directamente en el botón
+                if (e.target !== playBtn) {
+                    loadYouTubeVideo();
+                }
             });
+            
+            playBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                loadYouTubeVideo();
+            });
+            
+            // Cargar video cuando sea visible en el viewport
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !videoLoaded) {
+                        // Precargar recursos del video cuando sea visible
+                        const videoId = videoPlaceholder.dataset.videoId;
+                        const preloadLink = document.createElement('link');
+                        preloadLink.rel = 'preconnect';
+                        preloadLink.href = 'https://www.youtube.com';
+                        document.head.appendChild(preloadLink);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            observer.observe(videoPlaceholder);
         });
 
         // Funcionalidad existente (mantenida)
