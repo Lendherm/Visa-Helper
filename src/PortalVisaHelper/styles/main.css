@@ -10,51 +10,6 @@ body, html {
 }
 
 /* Header */
-
-/* Header Controls */
-.header-controls {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-/* ELIMINAR ESTA SECCIÓN DUPLICADA DEL translate-btn */
-/*
-.translate-btn {
-    background: #60a3bc;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.translate-btn:hover {
-    background: #0a3d62;
-}
-*/
-
-/* Responsive para header controls */
-@media (max-width: 768px) {
-    .header-controls {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        margin-top: 10px;
-    }
-    
-    /* ELIMINAR ESTO TAMBIÉN
-    .translate-btn {
-        padding: 10px 15px;
-    }
-    */
-}
-
 .site-header {
     background-color: #0a3d62;
     color: white;
@@ -93,7 +48,7 @@ body, html {
 
 .anniversary {
     text-align: center;
-    color: #78e08f;
+    color: #78e08f; /* Cambiado de #00ff88 */
     line-height: 1.2;
 }
 
@@ -110,7 +65,6 @@ body, html {
     font-size: 12px;
 }
 
-
 .affiliate-button {
     background: linear-gradient(to right, #0a3d62, #60a3bc);
     color: white;
@@ -125,6 +79,23 @@ body, html {
 .affiliate-button:hover {
     background: linear-gradient(to right, #60a3bc, #0a3d62);
     color: white;
+}
+
+/* Header Controls */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Responsive para header controls */
+@media (max-width: 768px) {
+    .header-controls {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
 }
 
 /* Menú lateral */
@@ -265,17 +236,17 @@ body, html {
 }
 
 .api-status.connected {
-    background: #78e08f;
+    background: #007a5a; /* Cambiado de #78e08f */
     color: white;
 }
 
 .api-status.loading {
-    background: #f6b93b;
+    background: #cc5500; /* Cambiado de #f6b93b */
     color: white;
 }
 
 .api-status.error {
-    background: #e55039;
+    background: #c23b3b; /* Cambiado de #e55039 */
     color: white;
 }
 
@@ -295,12 +266,13 @@ body, html {
 }
 
 .contact-info a {
-    color: white;
+    color: #78e08f; /* Cambiado de white */
     text-decoration: underline;
+    font-weight: 600; /* Añadido */
 }
 
 .contact-info a:hover {
-    color: #78e08f;
+    color: #ffffff; /* Cambiado de #78e08f */
 }
 
 .overlay.active {
@@ -322,7 +294,6 @@ main {
 .content-section.active {
     display: block;
 }
-
 
 /* ====================================
    ESTILO DEL NUEVO LOGO GoGainzer
@@ -363,7 +334,6 @@ main {
   opacity: 1; /* Asegura que sea visible */
 }
 
-
 /* ===== ANIMACIÓN DE LOGO / SPINNER ===== */
 .translation-spinner {
   width: 64px;
@@ -379,7 +349,6 @@ main {
   to { transform: rotate(360deg); }
 }
 
-
 /* Versión responsive */
 @media (max-width: 768px) {
     .logo {
@@ -387,7 +356,6 @@ main {
         text-align: center;
     }
 }
-
 
 @keyframes fadeIn {
     from { opacity: 0; }

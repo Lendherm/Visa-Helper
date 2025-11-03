@@ -7,9 +7,9 @@
 }
 
 .dropdown-toggle {
-    background: #60a3bc;
+    background: #0a3d62; /* Cambiado de #60a3bc */
     color: white;
-    border: none;
+    border: 2px solid #ffffff; /* Borde añadido */
     padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -20,10 +20,11 @@
     gap: 5px;
     min-width: 160px;
     justify-content: space-between;
+    font-weight: 600; /* Añadido */
 }
 
 .dropdown-toggle:hover {
-    background: #0a3d62;
+    background: #0056b3; /* Cambiado de #0a3d62 */
 }
 
 .dropdown-menu {
@@ -63,7 +64,8 @@
 
 .dropdown-item .language-name {
     font-size: 14px;
-    color: #333;
+    color: #000000 !important; /* Negro puro para máximo contraste */
+    font-weight: 500;
 }
 
 /* Asegurar que el dropdown esté por encima de otros elementos */
@@ -89,19 +91,19 @@
 }
 
 .notification.success {
-    background: #78e08f;
+    background: #007a5a; /* Cambiado de #78e08f */
 }
 
 .notification.error {
-    background: #e55039;
+    background: #c23b3b; /* Cambiado de #e55039 */
 }
 
 .notification.info {
-    background: #60a3bc;
+    background: #0a3d62; /* Cambiado de #60a3bc */
 }
 
 .notification.warning {
-    background: #f6b93b;
+    background: #cc5500; /* Cambiado de #f6b93b */
 }
 
 @keyframes slideInNotification {
@@ -117,9 +119,9 @@
 
 /* ===== BOTONES DE TRADUCCIÓN (VERSIÓN ÚNICA) ===== */
 .translate-btn {
-    background: #60a3bc;
+    background: #0a3d62; /* Cambiado de #60a3bc */
     color: white;
-    border: none;
+    border: 2px solid #ffffff; /* Borde añadido */
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -128,16 +130,17 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    font-weight: 700; /* Aumentado */
 }
 
 .translate-btn:hover {
-    background: #0a3d62;
+    background: #0056b3; /* Cambiado de #0a3d62 */
 }
 
 .calendar-btn {
-    background: #60a3bc;
+    background: #0a3d62; /* Cambiado de #60a3bc */
     color: white;
-    border: none;
+    border: 2px solid #ffffff; /* Borde añadido */
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -146,10 +149,11 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    font-weight: 700; /* Aumentado */
 }
 
 .calendar-btn:hover {
-    background: #0a3d62;
+    background: #0056b3; /* Cambiado de #0a3d62 */
 }
 
 /* ===== COMPONENTES ESPECÍFICOS ===== */
@@ -214,7 +218,7 @@
 }
 
 .dashboard-card .status {
-    background: #78e08f;
+    background: #007a5a; /* Cambiado de #78e08f */
     color: white;
     padding: 5px 10px;
     border-radius: 20px;
@@ -284,10 +288,11 @@
     cursor: pointer;
     transition: background 0.3s;
     font-size: 14px;
+    font-weight: 600; /* Añadido */
 }
 
 .api-tool-btn:hover {
-    background: #60a3bc;
+    background: #0056b3; /* Cambiado de #60a3bc */
 }
 
 /* Formularios */
@@ -383,19 +388,19 @@
 
 .form-btn {
     background: #0a3d62;
-    color: white;
-    border: none;
+    color: white !important; /* Forzado */
+    border: 2px solid #ffffff; /* Borde añadido */
     padding: 12px 24px;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 700; /* Aumentado de 500 */
     min-width: 120px;
 }
 
 .form-btn:hover:not(:disabled) {
-    background: #60a3bc;
+    background: #0056b3; /* Cambiado de #60a3bc */
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
@@ -408,12 +413,12 @@
 }
 
 #submit-btn {
-    background: #78e08f;
-    color: #0a3d62;
+    background: #007a5a; /* Cambiado de #78e08f */
+    color: #ffffff !important; /* Cambiado de #0a3d62 */
 }
 
 #submit-btn:hover {
-    background: #60c97c;
+    background: #005a40; /* Cambiado de #60c97c */
 }
 
 /* ===== ESTILOS ORIGINALES DEL FORMULARIO ===== */
@@ -503,7 +508,7 @@
 }
 
 .progress-step.completed .step-circle {
-    background: #78e08f;
+    background: #007a5a; /* Cambiado de #78e08f */
 }
 
 /* Documentos */
@@ -543,6 +548,7 @@
     border-radius: 20px;
     font-size: 14px;
     margin-top: 10px;
+    font-weight: 600; /* Añadido */
 }
 
 .status-pending {
