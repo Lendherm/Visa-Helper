@@ -6,8 +6,41 @@
     <title>GoGainzer: Servicios de Visa e Inmigración</title>
     <meta name="description" content="Asistencia experta para visas e inmigración. Más de 500,000 casos exitosos. Servicios de visa, pasaportes y procesos de inmigración.">
     <link rel="stylesheet" href="./styles/gogainzer.css">
-    
+    <style>
+        /* Solo agregué estos estilos para el video más grande */
+        .video-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
 
+        .video-container iframe {
+            width: 100%;
+            height: 560px;
+            display: block;
+        }
+
+        /* Responsive para el video más grande */
+        @media (max-width: 1024px) {
+            .video-container iframe {
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-container iframe {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-container iframe {
+                height: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Enlace para saltar al contenido (accesibilidad) -->
@@ -48,6 +81,27 @@
                 <h1 id="hero-heading">Asistencia Experta para Documentación de Viaje</h1>
                 <p>Asistencia rápida y precisa con documentos de viaje para una experiencia sin complicaciones</p>
                 <a href="/US_Visa/US_Visa.html" class="btn">Comenzar Ahora</a>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section" aria-labelledby="video-heading">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="video-heading">Conoce Nuestros Servicios</h2>
+                    <p>Mira este video para entender cómo podemos ayudarte con tus trámites de visa e inmigración</p>
+                </div>
+                <div class="video-container">
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/1U28VduUJco" 
+                        title="Video de GoGainzer - Servicios de Visa e Inmigración" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         </section>
 
@@ -311,7 +365,6 @@
             </div>
         </div>
     </footer>
-
 
     <script>
     // Funcionalidad para las preguntas frecuentes (accesible)
