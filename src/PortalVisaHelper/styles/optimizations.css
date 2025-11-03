@@ -145,8 +145,8 @@
     color: #ffffff !important;
 }
 
-/* 11. VERIFICACIÓN DE CONTRASTE GENERAL */
-@media (prefers-contrast: high) {
+/* 11. VERIFICACIÓN DE CONTRASTE GENERAL - CORREGIDO */
+@media (prefers-contrast: more) {
     .anniversary,
     .contact-info a,
     .sidebar-content h4 {
@@ -157,10 +157,35 @@
     .dashboard-card {
         border: 2px solid #0a3d62;
     }
+    
+    .translate-btn,
+    .calendar-btn,
+    .form-btn {
+        border-width: 3px;
+        font-weight: 700;
+    }
 }
 
 /* Focus visible mejorado */
 *:focus {
     outline: 3px solid #78e08f !important;
     outline-offset: 2px !important;
+}
+
+/* Mejoras adicionales para modo alto contraste del sistema */
+@media (prefers-contrast: more) {
+    .site-header {
+        background-color: #000000 !important;
+        border-bottom: 3px solid #ffffff;
+    }
+    
+    .side-menu {
+        background-color: #000000 !important;
+        border-right: 3px solid #ffffff;
+    }
+    
+    .dashboard-card {
+        border: 2px solid #000000;
+        background-color: #ffffff;
+    }
 }
